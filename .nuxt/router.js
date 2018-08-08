@@ -4,8 +4,6 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 const _f7842f50 = () => import('..\\pages\\testvuetify.vue' /* webpackChunkName: "pages_testvuetify" */).then(m => m.default || m)
-const _407401c1 = () => import('..\\pages\\joystickDouble.vue' /* webpackChunkName: "pages_joystickDouble" */).then(m => m.default || m)
-const _2459b045 = () => import('..\\pages\\joystickKobuki.vue' /* webpackChunkName: "pages_joystickKobuki" */).then(m => m.default || m)
 const _7cdf2d6e = () => import('..\\pages\\index.vue' /* webpackChunkName: "pages_index" */).then(m => m.default || m)
 
 
@@ -70,16 +68,6 @@ export function createRouter () {
 			path: "/testvuetify",
 			component: _f7842f50,
 			name: "testvuetify"
-		},
-		{
-			path: "/joystickDouble",
-			component: _407401c1,
-			name: "joystickDouble"
-		},
-		{
-			path: "/joystickKobuki",
-			component: _2459b045,
-			name: "joystickKobuki"
 		},
 		{
 			path: "/",
