@@ -1,13 +1,13 @@
 <template lang="pug">
 v-layout(id="presentation" wrap row :style="texteSize" class='text-xs-center color--white')
 	v-flex(xs12)
-		// vue-particles(color="#dedede" style="height : 200px;"  :moveSpeed=2 hoverMode="grab")
+		// vue-particles(color="#dedede" style="height : 200px;" :moveSpeed=2 hoverMode="grab")
 		// v-observe-visibility="visibilityChanged"
-	// v-flex(xs12) {{ show }}
-	v-flex(xs12 style="height: 500px;" v-observe-visibility="visibilityChanged")
-		// v-btn( @click="show = !show")
+		// v-flex(xs12)
+	v-flex(xs12 style="height: 500px;" )
+		v-btn( @click="show = !show") {{ show }}
 		transition(name="slideIn")
-			v-flex(id="penchee" v-if="show") {{ presentation}} <br/><br/>{{ intro }}
+			v-flex(id="penchee" v-if="show") {{ presentation}}<br/>{{ intro }}
 </template>
 
 <script>
@@ -40,15 +40,15 @@ export default {
     }
   },
   methods: {
-    visibilityChanged( isVisible, entry ) {
-      this.isVisible = isVisible
-      console.log( Math.round( entry.intersectionRatio * 100 ) + '%' )
-      if ( this.isVisible ) {
-        this.show = true
-      } else {
-        this.show = false
-      }
-    }
+    // visibilityChanged( isVisible, entry ) {
+    //   this.isVisible = isVisible
+    //   console.log( Math.round( entry.intersectionRatio * 100 ) + '%' )
+    //   if ( this.isVisible ) {
+    //     this.show = true
+    //   } else {
+    //     this.show = false
+    //   }
+    // }
   }
 }
 </script>
@@ -65,24 +65,27 @@ export default {
   // animation-iteration-count: infinite
 
 .slideIn-enter-active
-  animation: slidein 6s
+  animation: slidein 1s
 
   @keyframes slidein
     0%
-      transform: translateY(200px)
+      transform: translateY(100px) perspective(350px) rotateX(25deg)
+      transform-origin: 30% 100%
+      opacity: 0
+
     100%
-      transform: translateY(0px)
-      transform-origin: 50% 100%
       transform: perspective(350px) rotateX(25deg)
+      transform-origin: 50% 100%
+      opacity: 1
 
 .slideIn-leave-active
-  animation: slideout 6s
+  animation: slideout 1s
 
   @keyframes slideout
     0%
-      transform: translateY(200px)
+      transform: translateY(0px) perspective(350px) rotateX(25deg)
       transform-origin: 50% 100%
-      transform: perspective(350px) rotateX(25deg)
+
     100%
       transform: translateY(-200px) perspective(700px) rotateX(50deg) scale(0.2)
       transform-origin: 50% 100%
