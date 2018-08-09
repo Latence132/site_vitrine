@@ -18,7 +18,7 @@ v-layout.posFixed(id="toolbar" wrap  v-scroll="onScroll" @mouseover="toolbar = t
 								v-btn.colorWhite(flat :style="textSize")
 									img(src="/linkedin.jpg" :height="iconSize")
 		v-flex(v-else-if="!toolbar")
-			v-icon fas fa-bars
+			v-icon.ma-3.pa-3 fas fa-bars
 </template>
 
 <script>
@@ -81,6 +81,11 @@ export default {
 
 .transparent
   background-color: transparent !important
+
+.posFixed
+	position: fixed
+	display: float
+	width: 100%
 
 .fade-enter-active .fade-leave-active
   transition: opacity .8s
