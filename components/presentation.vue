@@ -69,8 +69,7 @@ export default {
 
   @keyframes slidein
     0%
-      transform: translateY(100px) perspective(350px) rotateX(25deg)
-      transform-origin: 30% 100%
+      transform: translateY(100px)
       opacity: 0
 
     100%
