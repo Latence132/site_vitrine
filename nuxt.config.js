@@ -45,7 +45,8 @@ module.exports = {
       { hid: 'description', name: 'description', content: 'Nuxt.js project' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/informatique_binaire_petit.jpg' }
+      { rel: 'icon', type: 'image/x-icon', href: '/informatique_binaire_petit.jpg' },
+      { rel: 'stylesheet',  href: 'https://fonts.googleapis.com/css?family=Dosis'  }
     ]
   },
   /*
@@ -53,7 +54,8 @@ module.exports = {
   */
   loading: { color: '#3B8070' },
   plugins: [
-    '~plugins/vuetify.js'
+    '~plugins/vuetify.js',
+    { src:'~plugins/vue-particles.js', ssr: false }
   ]
 
 }
