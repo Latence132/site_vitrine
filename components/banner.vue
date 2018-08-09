@@ -1,7 +1,7 @@
 <template lang="pug">
 v-layout.posRelative(column justify-center class="mt-0 pt-0")
 	v-flex
-		video(height="100%" width="100%" loop)
+		video(height="100%" width="100%" autoplay loop)
 			source(src="/bg-2.ogg" type='video/ogg')
 			source(src="/bg-2.mp4" type='video/mp4')
 			source(src="/bg-2.webm" type='video/webm')
@@ -44,6 +44,7 @@ export default {
 	position: absolute
 	width: 100%
 	margin: 0 auto
+	top: 42%
 
 .posRelative
 	position: absolute
