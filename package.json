@@ -1,8 +1,8 @@
 {
-  "name": "joystick4",
+  "name": "siteVitrine",
   "version": "1.0.0",
-  "description": "Nuxt.js project",
-  "author": "Akeros",
+  "description": "site vitrine Nuxt",
+  "author": "Alexandre Chaumet",
   "private": true,
   "scripts": {
     "dev": "nuxt",
@@ -24,7 +24,7 @@
     "roslib": "^0.20.0",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
-    "vuetify": "^1.0.19"
+    "vuetify": "^1.1.1"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.1",
