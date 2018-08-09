@@ -55,6 +55,7 @@ module.exports = {
   loading: { color: '#3B8070' },
   plugins: [
     '~plugins/vuetify.js',
+    '~plugins/vue-observe-visibility.js',
     { src:'~plugins/vue-particles.js', ssr: false }
   ]
 

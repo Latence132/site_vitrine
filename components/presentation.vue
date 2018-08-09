@@ -1,18 +1,23 @@
 <template lang="pug">
-v-layout( id="presentation" wrap row :style="texteSize" class='text-xs-center')
-  v-flex(xs12 )
-    vue-particles(color="#dedede" style="height : 200px;"  :moveSpeed=2 hoverMode="grab" particlesNumber=40)
-  v-flex(xs12) Présentation
-  v-parallax {{ intro }}
-  v-flex(xs12) Application minicarte avec OpenStreetMap
-
+v-layout(id="presentation" wrap row :style="texteSize" class='text-xs-center color--white')
+	v-flex(xs12)
+		// vue-particles(color="#dedede" style="height : 200px;"  :moveSpeed=2 hoverMode="grab")
+		// v-observe-visibility="visibilityChanged"
+	// v-flex(xs12) {{ show }}
+	v-flex(xs12 style="height: 500px;" v-observe-visibility="visibilityChanged")
+		// v-btn( @click="show = !show")
+		transition(name="slideIn")
+			v-flex(id="penchee" v-if="show") {{ presentation}} <br/><br/>{{ intro }}
 </template>
 
 <script>
 export default {
   data() {
     return {
-      intro: 'Après avoir travaillé quelques années en tant que prestataire informatique, j\'ai décidé je me reconvertir au métier de développeur web. J\'ai commencé par des cours sur Openclassrooms puis j\'ai continué avec la formation developpeur logiciel de l\'IFPA Bordeaux. Cette page est réalisé avec Nuxt (Vuejs) et Vuetify et présente quelques petits développements.'
+      presentation: "Présentation",
+      intro: "Après avoir travaillé quelques années en tant que prestataire informatique, j\'ai décidé je me reconvertir au métier de développeur web.\n J\'ai commencé par des leçons sur Openclassrooms puis continué avec l\'IFPA Bordeaux.\n Cette page est réalisée avec Nuxt (Vuejs) et Vuetify et présente quelques petits développements en HTML, CSS, JS",
+      isVisible: true,
+      show: false
     }
   },
   computed: {
@@ -29,6 +34,20 @@ export default {
         case 'xl':
           return 'font-size: 44px;'
       }
+    },
+    visible() {
+
+    }
+  },
+  methods: {
+    visibilityChanged( isVisible, entry ) {
+      this.isVisible = isVisible
+      console.log( Math.round( entry.intersectionRatio * 100 ) + '%' )
+      if ( this.isVisible ) {
+        this.show = true
+      } else {
+        this.show = false
+      }
     }
   }
 }
@@ -40,8 +59,37 @@ export default {
   color: white
   font-family: 'Dosis', sans-serif
 
-div
-  border: 1px solid red
+#penchee
+  transform-origin: 50% 100%
+  transform: perspective(350px) rotateX(25deg)
+  // animation-iteration-count: infinite
+
+.slideIn-enter-active
+  animation: slidein 6s
+
+  @keyframes slidein
+    0%
+      transform: translateY(200px)
+    100%
+      transform: translateY(0px)
+      transform-origin: 50% 100%
+      transform: perspective(350px) rotateX(25deg)
+
+.slideIn-leave-active
+  animation: slideout 6s
+
+  @keyframes slideout
+    0%
+      transform: translateY(200px)
+      transform-origin: 50% 100%
+      transform: perspective(350px) rotateX(25deg)
+    100%
+      transform: translateY(-200px) perspective(700px) rotateX(50deg) scale(0.2)
+      transform-origin: 50% 100%
+      opacity: 0
+
+
+
 
 
 

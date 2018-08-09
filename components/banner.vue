@@ -1,6 +1,6 @@
 <template lang="pug">
 v-layout.posRelative(column )
-	video(height="100%" width="100%" loop)
+	video(height="100%" width="100%"  loop)
 		source(src="/bg-2.ogg" type='video/ogg')
 		source(src="/bg-2.mp4" type='video/mp4')
 		source(src="/bg-2.webm" type='video/webm')
