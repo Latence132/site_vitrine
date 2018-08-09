@@ -1,6 +1,6 @@
 <template lang="pug">
 v-layout.posFixed(id="toolbar" wrap  v-scroll="onScroll" @mouseover="toolbar = true" @mouseleave="toolbar = false")
-	transition(name="fade")
+	transition(name="fade" mode="out-in")
 		v-toolbar.transparent(v-if="toolbar")
 			v-layout(wrap row justify-space-between align-center )
 				v-flex(xs4 sm2 class="text-xs-center ma-0 pa-0")
@@ -17,10 +17,20 @@ v-layout.posFixed(id="toolbar" wrap  v-scroll="onScroll" @mouseover="toolbar = t
 							v-flex(xs6 sm2  class="text-xs-center mx-auto" :style="flexSize")
 								v-btn.colorWhite(flat :style="textSize")
 									img(src="/linkedin.jpg" :height="iconSize")
+		v-flex(v-else-if="!toolbar")
+			v-icon fas fa-bars
 </template>
 
 <script>
 export default {
+  head: {
+    link: [ {
+      rel: "stylesheet",
+      href: "https://use.fontawesome.com/releases/v5.2.0/css/all.css",
+      integrity: "sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ",
+      crossorigin: "anonymous"
+    } ]
+  },
   data() {
     return {
       toolbar: true
@@ -61,11 +71,6 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-div
-  border: 1px solid red
-
-
-
 
 #toolbar
   color: white

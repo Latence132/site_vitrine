@@ -6,9 +6,9 @@ v-layout.posRelative(column justify-center class="mt-0 pt-0")
 			source(src="/bg-2.mp4" type='video/mp4')
 			source(src="/bg-2.webm" type='video/webm')
 			source(src="/bg-2.avi" type='video/avi')
-	v-layout.posAbsolute(row style="border: 1px solid green;" class="text-xs-center" )
-		v-flex(style="border: 1px solid red;" )
-			span(id='titre' style="border: 1px solid blue" :style="texteSize") Bienvenue sur le site de Alexandre Chaumet,<br/>développeur web
+	v-layout.posAbsolute(row class="text-xs-center" )
+		v-flex
+			span(id='titre' :style="texteSize") Bienvenue sur le site de Alexandre Chaumet,<br/>développeur web
 </template>
 
 <script>

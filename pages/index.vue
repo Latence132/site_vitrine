@@ -16,7 +16,4 @@ export default {
 </script>
 
 <style lang="stylus">
-.noMargin
-  margin: 0
-  padding: 0
 </style>
