@@ -1,10 +1,11 @@
 <template lang="pug">
-v-layout(id="presentation" wrap row :style="texteSize" class='text-xs-center color--white')
+v-layout(id="presentation" wrap row :style="textSize"  class='text-xs-center color--white')
 	v-flex(xs12)
 		// vue-particles(color="#dedede" style="height : 200px;" :moveSpeed=2 hoverMode="grab")
 		// v-observe-visibility="visibilityChanged"
 		// v-flex(xs12)
-	v-flex(xs12 style="height: 500px;" )
+		// virgil-cayasa-460484-unsplash.jpg" :style="{ backgroundImage: `url('${bgImage}')` }"
+	v-flex(id="stars" xs12 style="height: 500px" :style="{ backgroundImage: `url('${bgImage3}')`, backgroundSize: 'cover' }")
 		v-btn( @click="show = !show") {{ show }}
 		transition(name="slideIn")
 			v-flex(id="penchee" v-if="show") {{ presentation}}<br/>{{ intro }}
@@ -17,11 +18,14 @@ export default {
       presentation: "Présentation",
       intro: "Après avoir travaillé quelques années en tant que prestataire informatique, j\'ai décidé je me reconvertir au métier de développeur web.\n J\'ai commencé par des leçons sur Openclassrooms puis continué avec l\'IFPA Bordeaux.\n Cette page est réalisée avec Nuxt (Vuejs) et Vuetify et présente quelques petits développements en HTML, CSS, JS",
       isVisible: true,
-      show: false
+      show: false,
+      bgImage: "/virgil-cayasa-460484-unsplash.jpg",
+      bgImage2: "/astronomy-beautiful-constellations-813269.jpg",
+      bgImage3: "/nathan-anderson-218687-unsplash.jpg"
     }
   },
   computed: {
-    texteSize() {
+    textSize() {
       switch ( this.$vuetify.breakpoint.name ) {
         case 'xs':
           return 'font-size: 12px;'
@@ -34,9 +38,6 @@ export default {
         case 'xl':
           return 'font-size: 44px;'
       }
-    },
-    visible() {
-
     }
   },
   methods: {
@@ -89,10 +90,10 @@ export default {
       transform: translateY(-200px) perspective(700px) rotateX(50deg) scale(0.2)
       transform-origin: 50% 100%
       opacity: 0
+</style>
 
-
-
-
-
-
+<style lang="css" scoped>
+#stars{
+	background: url('/virgil-cayasa-460484-unsplash.jpg" ') no-repeat center center;
+}
 </style>

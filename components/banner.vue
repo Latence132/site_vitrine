@@ -7,13 +7,13 @@ v-layout.posRelative(column )
 		source(src="/bg-2.avi" type='video/avi')
 	v-layout.posAbsolute(row class="text-xs-center ma-0 pa-0" )
 		v-flex(class="ma-0 pa-0")
-			span(id='titre' :style="texteSize") Bienvenue sur le site de Alexandre Chaumet,<br/>développeur web
+			span(id='titre' :style="textSize") Bienvenue sur le site de Alexandre Chaumet,<br/>développeur web
 </template>
 
 <script>
 export default {
   computed: {
-    texteSize() {
+    textSize() {
       switch ( this.$vuetify.breakpoint.name ) {
         case 'xs':
           return 'font-size: 12px;'
