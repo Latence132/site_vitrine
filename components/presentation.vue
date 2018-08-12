@@ -1,12 +1,8 @@
 <template lang="pug">
 v-layout(id="presentation" wrap row :style="textSize"  class='text-xs-center color--white')
-	v-flex(xs12)
-
-		// v-observe-visibility="visibilityChanged"
-		// v-flex(xs12)
-		// virgil-cayasa-460484-unsplash.jpg" :style="{ backgroundImage: `url('${bgImage}')` }"
-	v-flex(id="stars" xs12  :style="{ backgroundImage: `url('${bgImage3}')`, backgroundSize: 'cover', minHeight:'600px' }")
-		vue-particles(color="#dedede" style="height : 200px;" hoverMode="repulse" :moveSpeed="2" :lineLinked="false")
+	//  :style="{ backgroundImage: `url('${bgImage3}')`, backgroundSize: 'cover' }"
+	v-flex(id="stars" xs12 )
+		vue-particles(color="#dedede" style="height : 300px;" hoverMode="repulse" :moveSpeed="2" :lineLinked="false")
 		v-btn( @click="show = !show") {{ show }}
 		transition(name="slideIn")
 			v-flex(id="penchee" v-if="show") {{ presentation}}<br/>{{ intro }}
@@ -57,8 +53,6 @@ export default {
 
 <style lang="stylus" scoped>
 #presentation
-  background-color: rgb(6,19,22)
-  color: white
   font-family: 'Dosis', sans-serif
 
 #penchee

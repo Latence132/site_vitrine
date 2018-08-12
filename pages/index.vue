@@ -1,8 +1,14 @@
 <template lang="pug">
-v-layout(column)
+v-layout.pa-0.ma-0(wrap column)
 	menuNav
-	banner
-	presentation
+	v-container.pa-0.ma-0(fluid )
+		v-flex.pa-0.ma-0
+			v-parallax.pa-0.ma-0(id="slide1" :height="screenHeight")
+				banner
+	v-container.pa-0.ma-0(fluid )
+		v-flex.pa-0.ma-0
+			v-parallax.pa-0.ma-0(id="slide2" src="/nathan-anderson-218687-unsplash.jpg" :height="screenHeight")
+				presentation
 </template>
 
 <script>
@@ -14,9 +20,32 @@ export default {
     banner,
     menuNav,
     presentation
+  },
+  data() {
+    return {
+      screenWindow: 500
+    }
+  },
+  computed: {
+    screenHeight() {
+      return this.screenWindow
+    }
+  },
+  mounted() {
+    console.log( window.innerHeight )
+    this.screenWindow = window.innerHeight
+    this.resizeEvent = () => {
+      console.log( 'resize : ' + window.innerHeight )
+      this.screenWindow = window.innerHeight
+    }
+    window.addEventListener( 'resize', this.resizeEvent )
+  },
+  destroy() {
+    window.removeEventListener( 'resize', this.resizeEvent )
   }
 }
 </script>
 
 <style lang="stylus">
+
 </style>

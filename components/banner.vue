@@ -1,17 +1,18 @@
 <template lang="pug">
-v-layout.posRelative(column )
-	video(height="100%" width="100%"  loop)
-		source(src="/bg-2.ogg" type='video/ogg')
-		source(src="/bg-2.mp4" type='video/mp4')
-		source(src="/bg-2.webm" type='video/webm')
-		source(src="/bg-2.avi" type='video/avi')
-	v-layout.posAbsolute(row class="text-xs-center ma-0 pa-0" )
-		v-flex(class="ma-0 pa-0")
-			span(id='titre' :style="textSize") Bienvenue sur le site de Alexandre Chaumet,<br/>développeur web
+v-layout(id="banner" class="ma-0 pa-0 posAbsoluteVideo")
+	v-flex(xs12 class="ma-0 pa-0")
+		video-bg(id="videoPresentation" class="ma-0 pa-0" :sources="['/bg-2.ogg','/bg-2.mp4','/bg-2.webm']" img="/mer_ecran1.png")
+			v-flex(xs12)(id='titre' class="text-xs-center ma-0 pa-0 posAbsolute"  :style="textSize") Bienvenue sur le site de Alexandre Chaumet,<br/>développeur web
+
 </template>
 
 <script>
+import VideoBg from 'vue-videobg/src/VideoBackground.vue'
+
 export default {
+	components: {
+		VideoBg
+	},
   computed: {
     textSize() {
       switch ( this.$vuetify.breakpoint.name ) {
@@ -27,7 +28,7 @@ export default {
           return 'font-size: 44px;'
       }
     }
-  }
+	}
 }
 </script>
 
@@ -38,16 +39,19 @@ export default {
 	margin: 0 auto
 	top: 42%
 
-.posRelative
-	position: relative
+#banner
 	width: 100%
+
+
+.posAbsoluteVideo
+	position: absolute
+	top: 0
+	left: 0
 
 #titre
 	color: white
 	font-family: 'Dosis', sans-serif
 
-.noMargin
-	margin: 0
-	padding: 0
+
 
 </style>
