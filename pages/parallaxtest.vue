@@ -1,14 +1,8 @@
 <template lang="pug">
 v-layout(wrap column)
-	v-container.pa-0.ma-0( fluid)
-		v-flex.pa-0.ma-0
-			v-parallax(src="https://cdn.vuetifyjs.com/images/parallax/material.jpg" :height="screenHeight") {{ screenHeight }}
-	v-container.pa-0.ma-0(fluid )
-		v-flex.pa-0.ma-0
-			v-parallax(src="/mer_ecran1.png" :height="screenHeight") {{ screenHeight }}
-	v-container.pa-0.ma-0(fluid )
-		v-flex.pa-0.ma-0
-			v-parallax(src="/nathan-anderson-218687-unsplash.jpg" :height="screenHeight") {{ screenHeight }}
+	v-parallax(src="https://cdn.vuetifyjs.com/images/parallax/material.jpg" :height="screenHeight") {{ screenHeight }}
+	v-parallax(src="/mer_ecran1.png" :height="screenHeight") {{ screenHeight }}
+	v-parallax(src="/nathan-anderson-218687-unsplash.jpg" :height="screenHeight") {{ screenHeight }}
 </template>
 
 <script>

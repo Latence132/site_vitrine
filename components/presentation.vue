@@ -1,9 +1,8 @@
 <template lang="pug">
 v-layout(id="presentation" wrap row :style="textSize"  class='text-xs-center color--white')
-	//  :style="{ backgroundImage: `url('${bgImage3}')`, backgroundSize: 'cover' }"
 	v-flex(id="stars" xs12 )
-		vue-particles(color="#dedede" style="height : 300px;" hoverMode="repulse" :moveSpeed="2" :lineLinked="false")
-		v-btn( @click="show = !show") {{ show }}
+		vue-particles(color="#dedede" style="height : 300px;" hoverMode="repulse" :moveSpeed="2" :lineLinked="false" )
+		v-flex( v-observe-visibility="visibilityChanged" )
 		transition(name="slideIn")
 			v-flex(id="penchee" v-if="show") {{ presentation}}<br/>{{ intro }}
 </template>
@@ -38,15 +37,17 @@ export default {
     }
   },
   methods: {
-    // visibilityChanged( isVisible, entry ) {
-    //   this.isVisible = isVisible
-    //   console.log( Math.round( entry.intersectionRatio * 100 ) + '%' )
-    //   if ( this.isVisible ) {
-    //     this.show = true
-    //   } else {
-    //     this.show = false
-    //   }
-    // }
+    visibilityChanged( isVisible, entry ) {
+      this.isVisible = isVisible
+      console.log( Math.round( entry.intersectionRatio * 100 ) + '%' )
+      if ( this.isVisible ) {
+				console.log('visible')
+        this.show = true
+      } else {
+				console.log('non visible')
+        this.show = false
+      }
+    }
   }
 }
 </script>
@@ -57,11 +58,11 @@ export default {
 
 #penchee
   transform-origin: 50% 100%
-  transform: perspective(350px) rotateX(25deg)
+  transform: perspective(500px) rotateX(10deg)
   // animation-iteration-count: infinite
 
 .slideIn-enter-active
-  animation: slidein 1s
+  animation: slidein 7s
 
   @keyframes slidein
     0%
@@ -69,7 +70,7 @@ export default {
       opacity: 0
 
     100%
-      transform: perspective(350px) rotateX(25deg)
+      transform: perspective(500px) rotateX(10deg)
       transform-origin: 50% 100%
       opacity: 1
 
@@ -78,17 +79,11 @@ export default {
 
   @keyframes slideout
     0%
-      transform: translateY(0px) perspective(350px) rotateX(25deg)
+      transform: perspective(500px) rotateX(10deg)
       transform-origin: 50% 100%
 
     100%
       transform: translateY(-200px) perspective(700px) rotateX(50deg) scale(0.2)
       transform-origin: 50% 100%
       opacity: 0
-</style>
-
-<style lang="css" scoped>
-#stars{
-	background: url('/virgil-cayasa-460484-unsplash.jpg" ') no-repeat center center;
-}
 </style>

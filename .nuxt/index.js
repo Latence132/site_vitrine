@@ -15,6 +15,7 @@ import { setContext, getLocation, getRouteData } from './utils'
 import nuxt_plugin_vuetify_512965c0 from 'nuxt_plugin_vuetify_512965c0' // Source: ..\\plugins\\vuetify.js
 import nuxt_plugin_vueobservevisibility_ffc64494 from 'nuxt_plugin_vueobservevisibility_ffc64494' // Source: ..\\plugins\\vue-observe-visibility.js
 import nuxt_plugin_vueparticles_c7fb4a30 from 'nuxt_plugin_vueparticles_c7fb4a30' // Source: ..\\plugins\\vue-particles.js (ssr: false)
+import nuxt_plugin_vue2leaflet_86c111b8 from 'nuxt_plugin_vue2leaflet_86c111b8' // Source: ..\\plugins\\vue2-leaflet.js (ssr: false)
 
 
 // Component: <no-ssr>
@@ -141,6 +142,7 @@ async function createApp (ssrContext) {
   
   if (process.browser) { 
     if (typeof nuxt_plugin_vueparticles_c7fb4a30 === 'function') await nuxt_plugin_vueparticles_c7fb4a30(app.context, inject)
+    if (typeof nuxt_plugin_vue2leaflet_86c111b8 === 'function') await nuxt_plugin_vue2leaflet_86c111b8(app.context, inject)
   }
 
   // If server-side, wait for async component to be resolved first

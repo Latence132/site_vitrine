@@ -56,7 +56,8 @@ module.exports = {
   plugins: [
     '~plugins/vuetify.js',
     '~plugins/vue-observe-visibility.js',
-    { src:'~plugins/vue-particles.js', ssr: false }
+    { src:'~plugins/vue-particles.js', ssr: false },
+    { src:'~plugins/vue2-leaflet.js', ssr: false }
     // '~plugins/VideoBg.js'
   ]
 
