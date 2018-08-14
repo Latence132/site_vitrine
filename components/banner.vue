@@ -2,7 +2,7 @@
 v-layout(id="banner" class="ma-0 pa-0 posAbsoluteVideo")
 	v-flex(xs12 class="ma-0 pa-0")
 		video-bg(id="videoPresentation" class="ma-0 pa-0" :sources="['/bg-2.ogg','/bg-2.mp4','/bg-2.webm']" img="/mer_ecran1.png")
-			v-flex(xs12)(id='titre' class="text-xs-center ma-0 pa-0 posAbsolute"  :style="textSize") Bienvenue sur le site de Alexandre Chaumet,<br/>développeur web
+			v-flex(xs12 class="text-xs-center ma-0 pa-0 posAbsolute"  :style="textSize") Bienvenue sur le site de Alexandre Chaumet,<br/>développeur web
 
 </template>
 
@@ -41,17 +41,12 @@ export default {
 
 #banner
 	width: 100%
-
+	color: white
+	font-family: 'Dosis', sans-serif
 
 .posAbsoluteVideo
 	position: absolute
 	top: 0
 	left: 0
-
-#titre
-	color: white
-	font-family: 'Dosis', sans-serif
-
-
 
 </style>

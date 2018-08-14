@@ -10,6 +10,7 @@ module.exports = {
    vendor: [
      'babel-polyfill',
      'eventsource-polyfill',
+     'vue2-leaflet'
    ],
     /*
     ** Run ESLint on save
@@ -23,10 +24,10 @@ module.exports = {
           exclude: /(node_modules)/
         })
         //this rules is needed with nuxt-edge
-        config.module.rules.push({
-          test: /\.pug$/,
-          loader: 'pug-plain-loader'
-        })
+        // config.module.rules.push({
+        //   test: /\.pug$/,
+        //   loader: 'pug-plain-loader'
+        // })
       }
     }
 
@@ -42,7 +43,8 @@ module.exports = {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'Nuxt.js project' }
+      { hid: 'description', name: 'description', content: 'Site vitrine A Chaumet' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/informatique_binaire_petit.jpg' },
@@ -56,8 +58,9 @@ module.exports = {
   plugins: [
     '~plugins/vuetify.js',
     '~plugins/vue-observe-visibility.js',
-    { src:'~plugins/vue-particles.js', ssr: false },
-    { src:'~plugins/vue2-leaflet.js', ssr: false }
+    // '~plugins/vue-particles.js',
+    { src:'~plugins/vue2-leaflet.js', ssr: false},
+    '~plugins/eventEmitter2.js'
     // '~plugins/VideoBg.js'
   ]
 

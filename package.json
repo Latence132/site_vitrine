@@ -18,6 +18,7 @@
     "babel-preset-vue-app": "^2.0.0",
     "eventemitter2": "^5.0.1",
     "eventsource-polyfill": "^0.9.6",
+    "nipplejs": "^0.7.1",
     "nuxt": "^1.4.1",
     "pug-loader": "^2.4.0",
     "stylus": "^0.54.5",

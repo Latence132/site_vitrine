@@ -1,10 +1,10 @@
 <template lang="pug">
 v-layout.pa-0.ma-0(wrap column)
 	menuNav
-	v-parallax.pa-0.ma-0(id="slide1" src="/mer_ecran1.png" :height="screenHeight")
-		banner
-	v-parallax(id="slide2" src="/nathan-anderson-218687-unsplash_1400pxh.jpg" :height="screenHeight")
-		presentation
+	// v-parallax.pa-0.ma-0(id="slide1" src="/mer_ecran1.png" :height="screenHeight")
+	// 	banner
+	// v-parallax(id="slide2" src="/nathan-anderson-218687-unsplash_1400pxh.jpg" :height="screenHeight")
+	// 	presentation
 	v-parallax.pa-0.ma-0(id="slide3" src="/mer_ecran1.png" :height="screenHeight")
 		OSM
 </template>

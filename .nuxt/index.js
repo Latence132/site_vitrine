@@ -14,8 +14,8 @@ import { setContext, getLocation, getRouteData } from './utils'
 /* Plugins */
 import nuxt_plugin_vuetify_512965c0 from 'nuxt_plugin_vuetify_512965c0' // Source: ..\\plugins\\vuetify.js
 import nuxt_plugin_vueobservevisibility_ffc64494 from 'nuxt_plugin_vueobservevisibility_ffc64494' // Source: ..\\plugins\\vue-observe-visibility.js
-import nuxt_plugin_vueparticles_c7fb4a30 from 'nuxt_plugin_vueparticles_c7fb4a30' // Source: ..\\plugins\\vue-particles.js (ssr: false)
 import nuxt_plugin_vue2leaflet_86c111b8 from 'nuxt_plugin_vue2leaflet_86c111b8' // Source: ..\\plugins\\vue2-leaflet.js (ssr: false)
+import nuxt_plugin_eventEmitter2_2a7453d0 from 'nuxt_plugin_eventEmitter2_2a7453d0' // Source: ..\\plugins\\eventEmitter2.js
 
 
 // Component: <no-ssr>
@@ -139,9 +139,9 @@ async function createApp (ssrContext) {
   
   if (typeof nuxt_plugin_vuetify_512965c0 === 'function') await nuxt_plugin_vuetify_512965c0(app.context, inject)
   if (typeof nuxt_plugin_vueobservevisibility_ffc64494 === 'function') await nuxt_plugin_vueobservevisibility_ffc64494(app.context, inject)
+  if (typeof nuxt_plugin_eventEmitter2_2a7453d0 === 'function') await nuxt_plugin_eventEmitter2_2a7453d0(app.context, inject)
   
   if (process.browser) { 
-    if (typeof nuxt_plugin_vueparticles_c7fb4a30 === 'function') await nuxt_plugin_vueparticles_c7fb4a30(app.context, inject)
     if (typeof nuxt_plugin_vue2leaflet_86c111b8 === 'function') await nuxt_plugin_vue2leaflet_86c111b8(app.context, inject)
   }
 
