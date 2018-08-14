@@ -122,4 +122,7 @@ div >>> .back
   height: 150px
   width: 150px
 
+#joystick
+    border-radius: 50%
+
 </style>
