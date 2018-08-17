@@ -32,10 +32,10 @@ export default {
     }
   },
   mounted() {
-    console.log( window.innerHeight )
+    // console.log( window.innerHeight )
     this.screenWindow = window.innerHeight
     this.resizeEvent = () => {
-      console.log( 'resize : ' + window.innerHeight )
+      // console.log( 'resize : ' + window.innerHeight )
       this.screenWindow = window.innerHeight
     }
     window.addEventListener( 'resize', this.resizeEvent )
