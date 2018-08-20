@@ -1,8 +1,8 @@
 <template lang="pug">
 v-layout( id="OSM" wrap justify-center align-content-start )
-	v-flex(xs12 style="height: 93px; border: 1px solid red; bottom: 0px;" class="text-xs-center" :style="textSize2")
+	v-flex(xs12 style="height: 93px; bottom: 0px;" class="text-xs-center" :style="textSize2")
 		v-layout( align-end justify-center row fill-height)
-			v-flex(style="border: 1px solid yellow;") Suivez et pilotez les relevés météorologiques
+			v-flex.black--text Suivez et pilotez les relevés météorologiques
 	v-flex(xs6 )
 			v-layout(wrap align-content-space-around)
 				no-ssr
@@ -11,7 +11,7 @@ v-layout( id="OSM" wrap justify-center align-content-start )
 							l-tile-layer(:url="url")
 							l-marker(v-for="drone in drones" :key="drone.main.id"	:lat-lng="{ lat: drone.main.X, lng: drone.main.Y}"	@click="openPopup")
 								l-popup(:content="drone.main.name" :options="{ autoClose: true, closeOnClick: false, autoPan: false }")
-				v-flex(xs6).mx-auto.mt-5(id='joystick')
+				v-flex.mx-auto.mt-5( xs6 id='joystick')
 				v-flex.mx-auto(xs6)
 					v-btn.red(@click="xi = 0, yi = 0, working = false" ) Stop
 	v-flex(xs6)
@@ -243,7 +243,7 @@ div >>> .back
 
 div >>> #joystick
 	border-radius: 50%
-	border: 1px solid green
+	// border: 1px solid green
 	height: 5px
 	width: 5px
 

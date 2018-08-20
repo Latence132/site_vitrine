@@ -5,8 +5,10 @@ v-layout(wrap column)
 		banner
 	v-parallax(id="slide2" src="/nathan-anderson-218687-unsplash_1400pxh.jpg" :height="screenHeight")
 		presentation
-	v-parallax(id="slide3" src="/mer_ecran1.png" :height="screenHeight")
+	v-parallax(id="slide3" src="/aerial-aerial-view-architecture-977pxh.jpg" :height="screenHeight")
 		OSM
+	v-parallax(id="slide4" src="" :height="screenHeight")
+		CV
 </template>
 
 <script>
@@ -14,14 +16,14 @@ import banner from "~/components/banner.vue";
 import menuNav from "~/components/menuNav.vue";
 import presentation from "~/components/presentation.vue";
 import OSM from "~/components/OSM.vue";
-import OSM0 from "~/components/OSM0.vue";
+import CV from "~/components/CV.vue";
 export default {
   components: {
     banner,
     menuNav,
     presentation,
     OSM,
-		OSM0
+		CV
   },
   data() {
     return {
