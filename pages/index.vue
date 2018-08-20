@@ -1,12 +1,12 @@
 <template lang="pug">
 v-layout(wrap column)
 	menuNav
-	v-parallax(id="slide1" src="/mer_ecran1.png" :height="screenHeight")
-		banner
-	v-parallax(id="slide2" src="/nathan-anderson-218687-unsplash_1400pxh.jpg" :height="screenHeight")
-		presentation
-	v-parallax(id="slide3" src="/aerial-aerial-view-architecture-977pxh.jpg" :height="screenHeight")
-		OSM
+	// v-parallax(id="slide1" src="/mer_ecran1.png" :height="screenHeight")
+	// 	banner
+	// v-parallax(id="slide2" src="/nathan-anderson-218687-unsplash_1400pxh.jpg" :height="screenHeight")
+	// 	presentation
+	// v-parallax(id="slide3" src="/aerial-aerial-view-architecture-977pxh.jpg" :height="screenHeight")
+	// 	OSM
 	v-parallax(id="slide4" src="" :height="screenHeight")
 		CV
 </template>
