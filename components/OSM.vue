@@ -1,18 +1,22 @@
 <template lang="pug">
-v-layout(wrap justify-center align-center )
+v-layout( id="OSM" wrap justify-center align-content-start )
+	v-flex(xs12 style="height: 93px; border: 1px solid red; bottom: 0px;" class="text-xs-center" :style="textSize2")
+		v-layout( align-end justify-center row fill-height)
+			v-flex(style="border: 1px solid yellow;") Suivez et pilotez les relevés météorologiques
 	v-flex(xs6 )
-			v-layout(wrap column algin-center)
+			v-layout(wrap align-content-space-around)
 				no-ssr
-					v-flex
-						l-map(style="height: 450px; " ref="map" :zoom="zoom" :center="{ lat: drones[0].main.X, lng: drones[0].main.Y}"  infinite="false" inertia="false")
+					v-flex(xs12)
+						l-map(style="height: 450px;" ref="map" :zoom="zoom" :center="{ lat: drones[0].main.X, lng: drones[0].main.Y}"  infinite="false" inertia="false")
 							l-tile-layer(:url="url")
 							l-marker(v-for="drone in drones" :key="drone.main.id"	:lat-lng="{ lat: drone.main.X, lng: drone.main.Y}"	@click="openPopup")
-								l-popup(:content="drone.main.name" :options="{ autoClose: false, closeOnClick: false, autoPan: false }")
-				v-flex.mx-auto.posRelative.heightFixed(id='joystick')
-				v-flex.mx-auto
+								l-popup(:content="drone.main.name" :options="{ autoClose: true, closeOnClick: false, autoPan: false }")
+				v-flex(xs6).mx-auto.mt-5(id='joystick')
+				v-flex.mx-auto(xs6)
 					v-btn.red(@click="xi = 0, yi = 0, working = false" ) Stop
 	v-flex(xs6)
-		widget-line(:chart-data="currentData" :options='options' headline="Relevé météorologique"  ref="line")
+		widget-line(:chart-data="currentData" :options='options' headline="Relevé météorologique" :style="textSize" ref="line")
+		v-flex(style="font-family: 'Dosis', sans-serif;" :style="textSize") La carte est développé avec OpenStreetMap <br/> le joystick avec nipplejs <br/> le graphique avec chartjs
 </template>
 
 <script>
@@ -98,6 +102,36 @@ export default {
     LineChart,
     WidgetLine
   },
+  computed: {
+    textSize() {
+      switch ( this.$vuetify.breakpoint.name ) {
+        case 'xs':
+          return 'font-size: 10px;'
+        case 'sm':
+          return 'font-size: 12px;'
+        case 'md':
+          return 'font-size: 16px;'
+        case 'lg':
+          return 'font-size: 20px;'
+        case 'xl':
+          return 'font-size: 26px;'
+      }
+    },
+		textSize2() {
+			switch ( this.$vuetify.breakpoint.name ) {
+				case 'xs':
+					return 'font-size: 15px;'
+				case 'sm':
+					return 'font-size: 20px;'
+				case 'md':
+					return 'font-size: 24px;'
+				case 'lg':
+					return 'font-size: 28px;'
+				case 'xl':
+					return 'font-size: 32px;'
+			}
+		}
+	},
   methods: {
     // Open the drones Popup
     openPopup(event) {
@@ -114,8 +148,8 @@ export default {
         zone: document.getElementById("joystick"),
         mode: "static",
         position: {
-          left: "50%",
-          top: "50%"
+          left: "15%",
+          top: "75%"
         },
         size: 150,
         restOpacity: 1
@@ -207,19 +241,11 @@ div >>> .back
   background-size: cover !important
   opacity: 1 !important
 
-.posRelative
-  position: relative
-
-.posAbsolute
-	position: absolute
-
-.heightFixed
-  height: 150px
-  width: 150px
-
 div >>> #joystick
 	border-radius: 50%
 	border: 1px solid green
+	height: 5px
+	width: 5px
 
 
 </style>

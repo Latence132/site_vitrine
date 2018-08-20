@@ -25,7 +25,7 @@ export default {
   },
   data() {
     return {
-      screenWindow: this.screenHeight
+      screenWindow: 807
     };
   },
   computed: {
