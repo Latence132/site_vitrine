@@ -1,25 +1,22 @@
 <template lang="pug">
-v-layout(wrap justify-space align-center)
-	v-flex(xs12)
-		v-layout(wrap)
-			v-flex(xs6 height="100%")
+v-layout(wrap justify-center align-center )
+	v-flex(xs6 )
+			v-layout(wrap column algin-center)
 				no-ssr
-					l-map(style="height: 450px; " ref="map" :zoom="zoom" :center="{ lat: drones[0].main.X, lng: drones[0].main.Y}"  infinite="false" inertia="false")
-						l-tile-layer(:url="url")
-						l-marker(v-for="drone in drones" :key="drone.main.id"	:lat-lng="{ lat: drone.main.X, lng: drone.main.Y}"	@click="openPopup")
-							l-popup(:content="drone.main.name" :options="{ autoClose: false, closeOnClick: false, autoPan: false }")
-				v-flex(id='joystick' style="border: 1px solid green" ).posRelative.heightFixed
-				v-flex
-					v-btn(@click="xi = 0, yi = 0, working = false" class='red') Stop
-			v-flex(xs6 height="100%")
-				widget-line(:chart-data="currentData" :options='options' headline="Relevé météorologique"  ref="line")
+					v-flex
+						l-map(style="height: 450px; " ref="map" :zoom="zoom" :center="{ lat: drones[0].main.X, lng: drones[0].main.Y}"  infinite="false" inertia="false")
+							l-tile-layer(:url="url")
+							l-marker(v-for="drone in drones" :key="drone.main.id"	:lat-lng="{ lat: drone.main.X, lng: drone.main.Y}"	@click="openPopup")
+								l-popup(:content="drone.main.name" :options="{ autoClose: false, closeOnClick: false, autoPan: false }")
+				v-flex.mx-auto.posRelative.heightFixed(id='joystick')
+				v-flex.mx-auto
+					v-btn.red(@click="xi = 0, yi = 0, working = false" ) Stop
+	v-flex(xs6)
+		widget-line(:chart-data="currentData" :options='options' headline="Relevé météorologique"  ref="line")
 </template>
 
 <script>
-let L = {};
-if (process.browser) {
-  L = require("leaflet");
-}
+
 
 import WidgetLine from "~/components/WidgetLine.vue";
 import LineChart from "~/components/line-chart";
@@ -101,14 +98,6 @@ export default {
     LineChart,
     WidgetLine
   },
-  computed: {
-    center() {
-      return {
-        lat: this.X,
-        lng: this.Y
-      };
-    }
-  },
   methods: {
     // Open the drones Popup
     openPopup(event) {
@@ -186,6 +175,7 @@ export default {
   },
   mounted() {
     this.startJoystick();
+
     // Simulate moving and refresh positions
     setInterval(() => {
       this.mouveDrone(this.xi, this.yi);
@@ -193,7 +183,7 @@ export default {
     // update the chart
     setInterval(() => {
       this.updateChart();
-    }, 450);
+    }, 750);
   },
   head: {
     link: [
@@ -220,11 +210,16 @@ div >>> .back
 .posRelative
   position: relative
 
+.posAbsolute
+	position: absolute
+
 .heightFixed
   height: 150px
   width: 150px
 
-#joystick
-    border-radius: 50%
+div >>> #joystick
+	border-radius: 50%
+	border: 1px solid green
+
 
 </style>

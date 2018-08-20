@@ -60,7 +60,7 @@ module.exports = {
     '~plugins/vue-observe-visibility.js',
     // '~plugins/vue-particles.js',
     { src:'~plugins/vue2-leaflet.js', ssr: false},
-    '~plugins/eventEmitter2.js'
+    { src:'~plugins/vue-particles.js', ssr: false}
     // '~plugins/VideoBg.js'
   ]
 

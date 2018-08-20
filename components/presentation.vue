@@ -1,8 +1,10 @@
 <template lang="pug">
-v-layout(id="presentation" wrap row :style="textSize"  class='text-xs-center color--white')
-	v-flex(id="stars" xs12 )
-		vue-particles(color="#dedede" style="height : 300px;" hoverMode="repulse" :moveSpeed="2" :lineLinked="false" )
-		v-flex( v-observe-visibility="visibilityChanged" )
+v-flex(id="presentation" :style="textSize"  class='text-xs-center color--white')
+	v-layout(id="stars" xs12 wrap row )
+		v-flex.ma-0.pa-0( xs12)
+			no-ssr
+				vue-particles(color="#dedede" style="height : 300px;" hoverMode="repulse" :moveSpeed="2" :lineLinked="false" )
+		v-layout( v-observe-visibility="visibilityChanged" row   class='text-xs-center' wrap jusify-center )
 		transition(name="slideIn")
 			v-flex(id="penchee" v-if="show") {{ presentation}}<br/>{{ intro }}
 </template>
