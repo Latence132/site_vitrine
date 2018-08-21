@@ -7,8 +7,7 @@ v-layout(wrap column)
 	// 	presentation
 	// v-parallax(id="slide3" src="/aerial-aerial-view-architecture-977pxh.jpg" :height="screenHeight")
 	// 	OSM
-	v-parallax(id="slide4" src="" :height="screenHeight")
-		CV
+	CV
 </template>
 
 <script>
