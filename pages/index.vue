@@ -1,13 +1,13 @@
 <template lang="pug">
 v-layout(wrap column )
-	menuNav(@scrollIS="scrollIndex" :index="indexComp")
-	v-parallax(id="slide1" v-observe-visibility="visibilityChanged1" src="/mer_ecran1.png" :height="screenHeight")
+	menuNav(@scrollIS="scrollIndex" v-scroll="onScroll")
+	v-parallax(id="slide1" src="/mer_ecran1.png" :height="screenHeight")
 		banner
-	v-parallax(id="slide2" v-observe-visibility="visibilityChanged2" src="/nathan-anderson-218687-unsplash_1400pxh.jpg" :height="screenHeight")
+	v-parallax(id="slide2" src="/nathan-anderson-218687-unsplash_1400pxh.jpg" :height="screenHeight")
 		presentation
-	v-parallax(id="slide3" v-observe-visibility="visibilityChanged3" src="/aerial-aerial-view-architecture-1400pxh.jpg" :height="screenHeight")
+	v-parallax(id="slide3" src="/aerial-aerial-view-architecture-1400pxh.jpg" :height="screenHeight")
 		OSM
-	CV(id="slide4" v-observe-visibility="visibilityChanged4")
+	CV.pt-5.mt5(id="slide4")
 </template>
 
 <script>
@@ -29,10 +29,6 @@ export default {
   data() {
     return {
       screenWindow: 807,
-			isVisible1: false,
-			isVisible2: false,
-			isVisible3: false,
-			isVisible4: false,
 			duration: 300,
 			index:1,
       offset: 0,
@@ -57,49 +53,25 @@ export default {
 
   },
 	methods:{
-		visibilityChanged1( isVisible1, entry ) {
-      this.isVisible1 = isVisible1
-      console.log( Math.round( entry.intersectionRatio * 100 ) + '%' )
-      if ( entry.intersectionRatio * 100 >= 0.8) {
-				console.log('visible1')
-				this.index = 1
-      } else if ( entry.intersectionRatio * 100 <= 0.3) {
-				console.log('non visible1')
-      }
-    },
-		visibilityChanged2( isVisible2, entry ) {
-      this.isVisible2 = isVisible2
-      console.log( Math.round( entry.intersectionRatio * 100 ) + '%' )
-      if ( entry.intersectionRatio * 100  >= 0.8) {
-				console.log('visible2')
-				this.index = 2
-      } else if ( entry.intersectionRatio * 100 <= 0.3) {
-				console.log('non visible2')
-      }
-    },
-		visibilityChanged3( isVisible3, entry ) {
-      this.isVisible3 = isVisible3
-      console.log( Math.round( entry.intersectionRatio * 100 ) + '%' )
-      if ( entry.intersectionRatio * 100 >= 0.8) {
-				console.log('visible3')
-				this.index = 3
-      } else if ( entry.intersectionRatio * 100 <= 0.3) {
-				console.log('non visible3')
-      }
-    },
-		visibilityChanged4( isVisible4, entry ) {
-      this.isVisible4 = isVisible4
-      console.log( Math.round( entry.intersectionRatio * 100 ) + '%' )
-      if ( entry.intersectionRatio * 100 >= 0.8) {
-				console.log('visible4')
-				this.index = 4
-      } else {
-				console.log('non visible4')
-      }
-    },
 		scrollIndex(slide) {
 			console.log('slide :', slide)
 			this.$vuetify.goTo(slide, this.optionsSI)
+		},
+		onScroll() {
+			this.toolbar = false
+			if(window.scrollY <= this.screenHeight -50 )  {
+				this.$store.dispatch('page/setPage', 1)
+				console.log('onScroll' + 1)
+			} else if ( window.scrollY >= (this.screenHeight-50 ) && window.scrollY <= (this.screenHeight - 50) * 2) {
+				this.$store.dispatch('page/setPage', 2)
+				console.log('onScroll' + 2)
+			} else if ( window.scrollY >= (this.screenHeight-50 ) * 2 && window.scrollY <= (this.screenHeight - 50) * 3) {
+				this.$store.dispatch('page/setPage', 3)
+				console.log('onScroll' + 3)
+			} else if ( window.scrollY >= (this.screenHeight-50 ) * 3 && window.scrollY <= (this.screenHeight - 50)  * 4) {
+				this.$store.dispatch('page/setPage', 4)
+				console.log('onScroll' + 4)
+			}
 		}
 	},
   mounted() {

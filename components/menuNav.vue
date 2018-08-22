@@ -1,19 +1,19 @@
 <template lang="pug">
-v-layout.posFixed(id="toolbar" wrap  v-scroll="onScroll" @mouseover="toolbar = true" @mouseleave="toolbar = false")
+v-layout.posFixed(id="toolbar" wrap   @mouseover="toolbar = true" @mouseleave="toolbar = false")
 	transition(name="fade" mode="out-in")
 		v-toolbar.transparent(v-if="toolbar")
 			v-layout(wrap row justify-space-between align-center )
 				v-flex(xs4 sm2 class="text-xs-center ma-0 pa-0")
-					v-btn.colorWhite(flat :class="index === 1 ? 'outline' : 'red' "  class="ma-0 pa-0" :style="textSize" @click="$emit('scrollIS', '#slide1' )") Acceuil
+					v-btn.colorWhite(flat :class="navIndex === 1 ? 'blue' : '' "  class="ma-0 pa-0" :style="textSize" @click="[$emit('scrollIS', '#slide1'), setPage(1) ]") Acceuil
 				v-flex(xs8 sm10 class="text-xs-center ma-0 pa-0")
-					v-toolbar-items.transparent.colorWhite
+					v-toolbar-items
 						v-layout(wrap row justify-end align-center )
 							v-flex(xs6 sm2  class="text-xs-center mx-auto" :style="flexSize")
-								v-btn.colorWhite(flat :class="index === 2 ? 'outline' : 'blue' " :style="textSize" @click="$emit('scrollIS','#slide2' )") Présentation
+								v-btn.colorWhite(flat :class="navIndex === 2 ? 'blue' : '' " :style="textSize" @click="[$emit('scrollIS','#slide2' ), setPage(2)]") Présentation
 							v-flex(xs6 sm2  class="text-xs-center mx-auto" :style="flexSize")
-								v-btn.colorWhite(flat :class="index === 3 ? 'outline' : 'green' " :style="textSize" @click="$emit('scrollIS','#slide3' )") Pilotez un drone
+								v-btn.colorWhite(flat :class="navIndex === 3 ? 'blue' : '' " :style="textSize" @click="[$emit('scrollIS','#slide3' ), setPage(3)]") Pilotez un drone
 							v-flex(xs6 sm2  class="text-xs-center mx-auto" :style="flexSize")
-								v-btn.colorWhite(flat :class="index === 4 ? 'outline' : 'purple' " :style="textSize" @click="$emit('scrollIS','#slide4' )") CV
+								v-btn.colorWhite(flat :class="navIndex === 4 ? 'blue' : '' " :style="textSize" @click="[$emit('scrollIS','#slide4' ), setPage(4)]") CV
 							v-flex(xs6 sm2  class="text-xs-center mx-auto" :style="flexSize")
 								v-btn.colorWhite(flat :style="textSize")
 									img(src="/linkedin.jpg" :height="iconSize")
@@ -34,14 +34,6 @@ export default {
   data() {
     return {
       toolbar: true
-    }
-  },
-	props:{
-		index: Number
-	},
-  methods: {
-    onScroll() {
-      this.toolbar = !( window.scrollY > 50 )
     }
   },
   computed: {
@@ -68,8 +60,16 @@ export default {
         default:
           return 'font-size: 17px; min-width: 0;'
       }
-    }
+    },
+		navIndex(){
+			return this.$store.state.page.page
+		}
   },
+	methods:{
+		setPage(page){
+			this.$store.dispatch('page/setPage',page)
+		}
+	}
 }
 </script>
 
@@ -83,7 +83,7 @@ export default {
   color: white
 
 .transparent
-  background-color: transparent !important
+  background-color: rgba(37,37,42,.4) !important
 
 .posFixed
 	position: fixed

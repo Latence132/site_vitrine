@@ -41,12 +41,12 @@ export default {
   methods: {
     visibilityChanged( isVisible, entry ) {
       this.isVisible = isVisible
-      console.log( Math.round( entry.intersectionRatio * 100 ) + '%' )
+      //console.log( Math.round( entry.intersectionRatio * 100 ) + '%' )
       if ( this.isVisible ) {
-				// console.log('visible')
+				 console.log('visible')
         this.show = true
       } else {
-				// console.log('non visible')
+				 console.log('non visible')
         this.show = false
       }
     }
