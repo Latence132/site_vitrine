@@ -43,10 +43,10 @@ export default {
       this.isVisible = isVisible
       console.log( Math.round( entry.intersectionRatio * 100 ) + '%' )
       if ( this.isVisible ) {
-				console.log('visible')
+				// console.log('visible')
         this.show = true
       } else {
-				console.log('non visible')
+				// console.log('non visible')
         this.show = false
       }
     }

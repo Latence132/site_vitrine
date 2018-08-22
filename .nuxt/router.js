@@ -4,7 +4,6 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 const _f7842f50 = () => import('..\\pages\\testvuetify.vue' /* webpackChunkName: "pages_testvuetify" */).then(m => m.default || m)
-const _1f01fab2 = () => import('..\\pages\\index0.vue' /* webpackChunkName: "pages_index0" */).then(m => m.default || m)
 const _9b316586 = () => import('..\\pages\\parallaxtest.vue' /* webpackChunkName: "pages_parallaxtest" */).then(m => m.default || m)
 const _7cdf2d6e = () => import('..\\pages\\index.vue' /* webpackChunkName: "pages_index" */).then(m => m.default || m)
 
@@ -70,11 +69,6 @@ export function createRouter () {
 			path: "/testvuetify",
 			component: _f7842f50,
 			name: "testvuetify"
-		},
-		{
-			path: "/index0",
-			component: _1f01fab2,
-			name: "index0"
 		},
 		{
 			path: "/parallaxtest",

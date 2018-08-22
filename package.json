@@ -27,6 +27,8 @@
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
     "vue-chartjs": "^3.4.0",
+    "vue-fullpage": "^2.0.5",
+    "vue-fullpage.js": "0.0.5",
     "vue-observe-visibility": "^0.4.1",
     "vue-videobg": "^2.0.0",
     "vue2-leaflet": "^1.0.2",
