@@ -4,16 +4,16 @@ v-layout.posFixed(id="toolbar" wrap  v-scroll="onScroll" @mouseover="toolbar = t
 		v-toolbar.transparent(v-if="toolbar")
 			v-layout(wrap row justify-space-between align-center )
 				v-flex(xs4 sm2 class="text-xs-center ma-0 pa-0")
-					v-btn.colorWhite(flat outline  class="ma-0 pa-0" :style="textSize") Acceuil
+					v-btn.colorWhite(flat :class="{active:index ==0}" @click="$emit('moveToEvt',0)"  class="ma-0 pa-0" :style="textSize") Acceuil
 				v-flex(xs8 sm10 class="text-xs-center ma-0 pa-0")
 					v-toolbar-items.transparent.colorWhite
 						v-layout(wrap row justify-end align-center )
 							v-flex(xs6 sm2  class="text-xs-center mx-auto" :style="flexSize")
-								v-btn.colorWhite(flat :style="textSize") Salut
+								v-btn.colorWhite(flat :class="{active:index ==1}"  @click="$emit('moveToEvt',1)"  :style="textSize") Salut
 							v-flex(xs6 sm2  class="text-xs-center mx-auto" :style="flexSize")
-								v-btn.colorWhite(flat :style="textSize") coucou
+								v-btn.colorWhite(flat :class="{active:index ==2}"  @click="$emit('moveToEvt',2)"  :style="textSize") coucou
 							v-flex(xs6 sm2  class="text-xs-center mx-auto" :style="flexSize")
-								v-btn.colorWhite(flat :style="textSize") hello
+								v-btn.colorWhite(flat :class="{active:index ==3}"  @click="$emit('moveToEvt',3)"  :style="textSize") hello
 							v-flex(xs6 sm2  class="text-xs-center mx-auto" :style="flexSize")
 								v-btn.colorWhite(flat :style="textSize")
 									img(src="/linkedin.jpg" :height="iconSize")
@@ -33,6 +33,8 @@ export default {
   },
   data() {
     return {
+			index: 0,
+			pageNum: 0,
       toolbar: true
     }
   },
