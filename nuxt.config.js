@@ -10,7 +10,10 @@ module.exports = {
    vendor: [
      'babel-polyfill',
      'eventsource-polyfill',
-     'vue2-leaflet'
+     'vue2-leaflet',
+     'vuetify',
+     'vue-observe-visibility',
+     'vue-particles'
    ],
     /*
     ** Run ESLint on save

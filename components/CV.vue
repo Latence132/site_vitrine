@@ -1,12 +1,13 @@
 <template lang="pug">
-v-flex.elevation-6.black--text(id="cvWrapper")
+v-flex.black--text(id="cvWrapper")
   // First banner
-  v-layout.red(id="cvUpperBanner" xs12 wrap align-center )
-    v-flex.blue.text-xs-center(xs4)
-      img(src='\photo_cv_petit.png' alt="alexandre_chaumer_photo" style="height: 100px;	width: auto;")
-    v-flex.yellow.text-xs-center(xs8)
-      h2.my-auto Alexandre Chaumet
-      h3.my-auto Développeur web
+  v-parallax(id="parallax" src="/mer_ecran1.png" height="110" width="100%")
+    v-layout(id="cvUpperBanner" xs12 wrap align-center )
+      v-flex.ml-0.text-xs-center(xs4)
+        img.mt-2.pt-2(src='\photo_cv_petit.png' alt="alexandre_chaumer_photo" style="height: 100px;	width: auto;")
+      v-flex.mr-0.text-xs-center(xs8 style="font-size: 1.2rem")
+        h2.my-auto Alexandre Chaumet
+        h3.my-auto Développeur web
 
   v-layout(wrap)
     v-flex.text-xs-center(xs12 sm4 id="cvLeft")
@@ -32,10 +33,12 @@ v-flex.elevation-6.black--text(id="cvWrapper")
         v-flex.text-xs-left {{langue.nom}} {{langue.niv}}
 
       //Contact
-      v-flex.elevation-10.mt-5(id="cvContact" )
+      v-flex.elevation-10.mt-2(id="cvContact" )
         h4
           img(src='contact_transparent.png' alt="contact")
-        v-flex  {{contact.email}} <br/> {{contact.tel}} <br/> {{contact.adresse}}
+        v-flex
+          strong(style="font-size: 2rem") {{contact.email}}
+          | <br/> {{contact.tel}} <br/> {{contact.adresse}}
 
     v-flex.elevation-6.text-xs-center(xs12 sm8 id="cvRight")
 
@@ -58,7 +61,7 @@ v-flex.elevation-6.black--text(id="cvWrapper")
               v-flex.subheading(xs12) {{ expPro.travail }}
 
       //Formations
-      v-flex(id="cvFormations")
+      v-flex.mt-1(id="cvFormations")
         h4
           v-layout(wrap row )
             v-flex
@@ -83,7 +86,7 @@ export default {
         { date:'2016', temps:'1,5 ans', logo:'alten.png', lieu:'La défense (92)', job: 'Ingénieur solution SCADA', entreprise: 'Alten SIR - Air Liquide Service', travail: 'Installation, maintenance et evolution de solutions applicatives d\'acquisition et d\'historisation de données'},
         { date:'2014', temps:'1,5 ans', logo:'alten.png', lieu:'Arceuil (94)', job: 'Contrôleur de base de données', entreprise: 'Alten SIR - Orange', travail: 'Fiabilisation et migration du parc commercial depuis l\'ancien CRM de Wanadoo sur le nouveau d\'Orange'},
         { date:'2013', temps:'1,5 ans', logo:'solutec.png', lieu:'Massy (92)', job: 'Analyste de base données', entreprise: 'Solutec - Carrefour', travail: 'Réalisation d\'études et d\'extractions ad hoc en SQL'},
-        { date:'2009', temps:'3 ans', logo:'faurecia.jpg', lieu:'Caligny (61)', job: 'Apprenti qualiticien produit/process', entreprise: 'Faurecia', travail: 'Développement de macros VBA permettant de piloter informatiquement des indicateurs de non-qualités'},
+        { date:'2009', temps:'3.0 ans', logo:'faurecia.jpg', lieu:'Caligny (61)', job: 'Apprenti qualiticien produit/process', entreprise: 'Faurecia', travail: 'Développement de macros VBA permettant de piloter informatiquement des indicateurs de non-qualités'},
       ],
       formations: [
         { date:'2018', logo:'ifpa.png', nom: 'Titre professionnel délivré par IFPA', region: 'Mérignac (33)', titre: 'Développeur logiciel'},
@@ -92,7 +95,7 @@ export default {
         { date:'2007', logo:'iut.jpg', nom: 'DUT GEII', region: 'Vélizy (78)', titre: 'Génie Electrique et Informatique Industrielle'},
       ],
       competences:[
-        { titre: 'Developper une application client-serveur',  list: ['Maquetter une application', 'Concevoir une base de données', 'Mettre en place une base de données', 'Développer une interface utilisateur', 'Développer des composants d\'accès aux données']},
+        { titre: 'Développer une application client-serveur',  list: ['Maquetter une application', 'Concevoir une base de données', 'Mettre en place une base de données', 'Développer une interface utilisateur', 'Développer des composants d\'accès aux données']},
         { titre: 'Développer une application web',  list: ['Développer des pages web en lien avec une base de données', 'Mettre en oeuvre une solution de gestion de contenu ou e-commerce', 'Développer une application simple de mobilité numérique']},
         { titre: 'Langages',  list: ['HTML, CSS, JavaScript, PHP, SQL' ]},
         { titre: 'Outils de développement',  list: ['Bootstrap4, Semantic-UI, Vuetify', 'Nuxt, VueJS, NodeJS, JQuery', 'Symfony 3, Webpack, Git' ]}
@@ -105,29 +108,8 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-//div
-//  border: 1px solid red
 div
   font-family: 'Dosis', sans-serif
-
-div >>> #cvWrapper
-  //background-color: rgb(180,138,129)
-
-div >>> #cvUpperBanner
-  //height: 150px
-  //background-color: rgb(42,95,212)
-  //border-radius: 4px
-  //border: 1px solid black
-
-div >>> #cvLeft
-  //background-color: rgb(118,124,207)
-  //border-radius: 4px
-  //border: 1px solid black
-
-div >>> #cvRight
-  //background-color: rgb(40,164,29)
-  //border-radius: 4px
-  //border: 1px solid black
 
 h4, h5, img
   display: inline-block
@@ -136,7 +118,7 @@ div >>> .expDate
   padding:0 !important
   margin:0 !important
 
-#cvContact, #cvFormations, #cvCompetences, #cvExps
+#cvContact, #cvFormations, #cvCompetences, #cvExps, #parallax
   border-radius: 4px
   border: 1px solid black
 
@@ -144,4 +126,7 @@ div >>> .expDate
   padding: 0
   margin: 0
 
+//div >>> #cvUpperBanner
+//  background-image: url('/banner_linkedin.jpg')
+//  background-size: cover
 </style>

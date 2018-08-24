@@ -2,21 +2,24 @@
 v-layout( id="OSM" wrap justify-center align-content-start )
 	v-flex(xs12 style="height: 93px; bottom: 0px;" class="text-xs-center" :style="textSize2")
 		v-layout( align-end justify-center row fill-height)
-			v-flex.black--text Suivez et pilotez les relevés météorologiques
-	v-flex(xs6 )
+			v-flex.black--text Suivez et pilotez les relevés météorologiques {{ options.maintainAspectRatio}}
+	v-flex(xs12)
+			v-layout(wrap :class="chartPos" )
+					v-flex.mt-1.blue(xs12 sm6  :style="divHeight")
+						no-ssr
+							l-map( ref="map" :zoom="zoom" :center="{ lat: drones[0].main.X, lng: drones[0].main.Y}"  infinite="false" inertia="false" )
+								l-tile-layer(:url="url")
+								l-marker(v-for="drone in drones" :key="drone.main.id"	:lat-lng="{ lat: drone.main.X, lng: drone.main.Y}"	@click="openPopup")
+									l-popup(:content="drone.main.name" :options="{ autoClose: true, closeOnClick: false, autoPan: false }")
+					//position relative is for the responsiveness of chartjs
+					v-flex.ml-2.mt-1.blue.chart-container(xs7 sm4 style="position: relative" )
+						widget-line(id="chart" :chart-data="currentData" :options='optCharts' headline="Relevé météorologique" ref="line" )
+	v-flex(xs12)
 			v-layout(wrap align-content-space-around)
-				no-ssr
-					v-flex(xs12)
-						l-map(style="height: 450px;" ref="map" :zoom="zoom" :center="{ lat: drones[0].main.X, lng: drones[0].main.Y}"  infinite="false" inertia="false")
-							l-tile-layer(:url="url")
-							l-marker(v-for="drone in drones" :key="drone.main.id"	:lat-lng="{ lat: drone.main.X, lng: drone.main.Y}"	@click="openPopup")
-								l-popup(:content="drone.main.name" :options="{ autoClose: true, closeOnClick: false, autoPan: false }")
-				v-flex.mx-auto.mt-5( xs6 id='joystick')
+				v-flex.mx-auto.mt-5(xs6 id='joystick')
 				v-flex.mx-auto(xs6)
 					v-btn.red(@click="xi = 0, yi = 0, working = false" ) Stop
-	v-flex(xs6)
-		widget-line(:chart-data="currentData" :options='options' headline="Relevé météorologique" :style="textSize" ref="line")
-		v-flex(style="font-family: 'Dosis', sans-serif;" :style="textSize") La carte est développé avec OpenStreetMap <br/> le joystick avec nipplejs <br/> le graphique avec chartjs
+					v-flex(style="font-family: 'Dosis', sans-serif;" :style="textSize") La carte est développé avec OpenStreetMap <br/> le joystick avec nipplejs <br/> le graphique avec chartjs
 </template>
 
 <script>
@@ -38,7 +41,7 @@ export default {
         datasets: []
       },
       options: {
-        maintainAspectRatio: false,
+        maintainAspectRatio: true,
         scales: {
           yAxes: [
             {
@@ -103,6 +106,9 @@ export default {
     WidgetLine
   },
   computed: {
+		optCharts () {
+			return this.options
+		},
     textSize() {
       switch ( this.$vuetify.breakpoint.name ) {
         case 'xs':
@@ -129,6 +135,34 @@ export default {
 					return 'font-size: 28px;'
 				case 'xl':
 					return 'font-size: 32px;'
+			}
+		},
+		divHeight() {
+			switch ( this.$vuetify.breakpoint.name ) {
+				case 'xs':
+				this.options.maintainAspectRatio = true
+				console.log('xs ', this.options.maintainAspectRatio)
+					return 'height: 250px;'
+				default:
+					this.options.maintainAspectRatio = false
+					console.log('default ', this.options.maintainAspectRatio)
+					return 'height: auto'
+			}
+		},
+		divMargin() {
+			switch ( this.$vuetify.breakpoint.name ) {
+				case 'xs':
+					return 'margin-top: 5px;'
+				default:
+					return ''
+			}
+		},
+		chartPos() {
+			switch ( this.$vuetify.breakpoint.name ) {
+				case 'xs':
+					return 'justify-end'
+				default:
+					return 'justify-center'
 			}
 		}
 	},

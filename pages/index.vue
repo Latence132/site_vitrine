@@ -7,7 +7,7 @@ v-layout(wrap column )
 		presentation
 	v-parallax(id="slide3" src="/aerial-aerial-view-architecture-1400pxh.jpg" :height="screenHeight")
 		OSM
-	CV.pt-5.mt5(id="slide4")
+	CV(id="slide4")
 </template>
 
 <script>
@@ -61,16 +61,12 @@ export default {
 			this.toolbar = false
 			if(window.scrollY <= this.screenHeight -50 )  {
 				this.$store.dispatch('page/setPage', 1)
-				console.log('onScroll' + 1)
 			} else if ( window.scrollY >= (this.screenHeight-50 ) && window.scrollY <= (this.screenHeight - 50) * 2) {
 				this.$store.dispatch('page/setPage', 2)
-				console.log('onScroll' + 2)
 			} else if ( window.scrollY >= (this.screenHeight-50 ) * 2 && window.scrollY <= (this.screenHeight - 50) * 3) {
 				this.$store.dispatch('page/setPage', 3)
-				console.log('onScroll' + 3)
 			} else if ( window.scrollY >= (this.screenHeight-50 ) * 3 && window.scrollY <= (this.screenHeight - 50)  * 4) {
 				this.$store.dispatch('page/setPage', 4)
-				console.log('onScroll' + 4)
 			}
 		}
 	},
@@ -91,6 +87,5 @@ export default {
 };
 </script>
 
-<style lang="stylus">
-
+<style lang="stylus" scoped>
 </style>

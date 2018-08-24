@@ -26,7 +26,7 @@ export default {
     textSize() {
       switch ( this.$vuetify.breakpoint.name ) {
         case 'xs':
-          return 'font-size: 12px;'
+          return 'font-size: 18px;'
         case 'sm':
           return 'font-size: 20px;'
         case 'md':

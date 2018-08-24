@@ -1,7 +1,7 @@
 <template lang="pug">
 v-layout(id="banner" class="ma-0 pa-0 posAbsoluteVideo")
 	v-flex(xs12 class="ma-0 pa-0")
-		video-bg(id="videoPresentation" class="ma-0 pa-0" :sources="['/bg-2.ogg','/bg-2.mp4','/bg-2.webm']" img="/mer_ecran1.png")
+		video-bg(class="ma-0 pa-0" :sources="['/bg-2.ogg','/bg-2.mp4','/bg-2.webm']" img="/mer_ecran1.png")
 			v-flex(xs12 class="text-xs-center ma-0 pa-0 posAbsolute"  :style="textSize") Bienvenue sur le site de Alexandre Chaumet,<br/>développeur web
 
 </template>
@@ -17,7 +17,7 @@ export default {
     textSize() {
       switch ( this.$vuetify.breakpoint.name ) {
         case 'xs':
-          return 'font-size: 12px;'
+          return 'font-size: 18px;'
         case 'sm':
           return 'font-size: 20px;'
         case 'md':
