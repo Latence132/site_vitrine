@@ -2,7 +2,7 @@
 v-layout( id="OSM" wrap justify-center align-content-start )
 	v-flex(xs12 style="height: 93px; bottom: 0px;" class="text-xs-center" :style="textSize2")
 		v-layout( align-end justify-center row fill-height)
-			v-flex.black--text Suivez et pilotez les relevés météorologiques {{ options.maintainAspectRatio}}
+			v-flex.white--text Suivez et pilotez les relevés météorologiques
 	v-flex(xs12)
 			v-layout(wrap :class="chartPos" )
 					v-flex.mt-1.blue(xs12 sm6  :style="divHeight")
@@ -23,8 +23,6 @@ v-layout( id="OSM" wrap justify-center align-content-start )
 </template>
 
 <script>
-
-
 import WidgetLine from "~/components/WidgetLine.vue";
 import LineChart from "~/components/line-chart";
 export default {
@@ -48,11 +46,11 @@ export default {
               display: true,
               ticks: {
                 beginAtZero: false,
-                min: 1020,
-                max: 1032,
+                min: 17,
+                max: 32,
                 stepSize: 5,
                 callback: function(label, index, labels) {
-                  return label + " Pa"; // just change the '$' to % for percentage
+                  return label + "T(°C)"; // just change the '$' to % for percentage
                 }
               },
               gridLines: {
@@ -106,66 +104,66 @@ export default {
     WidgetLine
   },
   computed: {
-		optCharts () {
-			return this.options
-		},
+    optCharts() {
+      return this.options;
+    },
     textSize() {
-      switch ( this.$vuetify.breakpoint.name ) {
-        case 'xs':
-          return 'font-size: 10px;'
-        case 'sm':
-          return 'font-size: 12px;'
-        case 'md':
-          return 'font-size: 16px;'
-        case 'lg':
-          return 'font-size: 20px;'
-        case 'xl':
-          return 'font-size: 26px;'
+      switch (this.$vuetify.breakpoint.name) {
+        case "xs":
+          return "font-size: 10px;";
+        case "sm":
+          return "font-size: 12px;";
+        case "md":
+          return "font-size: 16px;";
+        case "lg":
+          return "font-size: 20px;";
+        case "xl":
+          return "font-size: 26px;";
       }
     },
-		textSize2() {
-			switch ( this.$vuetify.breakpoint.name ) {
-				case 'xs':
-					return 'font-size: 15px;'
-				case 'sm':
-					return 'font-size: 20px;'
-				case 'md':
-					return 'font-size: 24px;'
-				case 'lg':
-					return 'font-size: 28px;'
-				case 'xl':
-					return 'font-size: 32px;'
-			}
-		},
-		divHeight() {
-			switch ( this.$vuetify.breakpoint.name ) {
-				case 'xs':
-				this.options.maintainAspectRatio = true
-				console.log('xs ', this.options.maintainAspectRatio)
-					return 'height: 250px;'
-				default:
-					this.options.maintainAspectRatio = false
-					console.log('default ', this.options.maintainAspectRatio)
-					return 'height: auto'
-			}
-		},
-		divMargin() {
-			switch ( this.$vuetify.breakpoint.name ) {
-				case 'xs':
-					return 'margin-top: 5px;'
-				default:
-					return ''
-			}
-		},
-		chartPos() {
-			switch ( this.$vuetify.breakpoint.name ) {
-				case 'xs':
-					return 'justify-end'
-				default:
-					return 'justify-center'
-			}
-		}
-	},
+    textSize2() {
+      switch (this.$vuetify.breakpoint.name) {
+        case "xs":
+          return "font-size: 15px;";
+        case "sm":
+          return "font-size: 20px;";
+        case "md":
+          return "font-size: 24px;";
+        case "lg":
+          return "font-size: 28px;";
+        case "xl":
+          return "font-size: 32px;";
+      }
+    },
+    divHeight() {
+      switch (this.$vuetify.breakpoint.name) {
+        case "xs":
+          this.options.maintainAspectRatio = true;
+          //console.log("xs ", this.options.maintainAspectRatio);
+          return "height: 250px;";
+        default:
+          this.options.maintainAspectRatio = false;
+          //console.log("default ", this.options.maintainAspectRatio);
+          return "height: auto";
+      }
+    },
+    divMargin() {
+      switch (this.$vuetify.breakpoint.name) {
+        case "xs":
+          return "margin-top: 5px;";
+        default:
+          return "";
+      }
+    },
+    chartPos() {
+      switch (this.$vuetify.breakpoint.name) {
+        case "xs":
+          return "justify-end";
+        default:
+          return "justify-center";
+      }
+    }
+  },
   methods: {
     // Open the drones Popup
     openPopup(event) {
@@ -220,13 +218,13 @@ export default {
             data.length = 10;
             data.fill(0);
           }
-          data.push(Math.random() * (1032 - 1022) + 1022);
+          data.push(Math.random() * (32 - 17) + 17);
           data.shift();
 
           tmp.datasets.push({
             showLine: true,
             fill: false,
-            label: ["Pression atmosphérique"],
+            label: ["Température"],
             borderColor: color[i],
             borderWidth: 2,
             lineTension: 0.25,

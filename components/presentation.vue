@@ -4,7 +4,9 @@ v-flex(id="presentation" :style="textSize"  class='text-xs-center color--white')
 		v-flex.ma-0.pa-0( xs12)
 			no-ssr
 				vue-particles(color="#dedede" style="height : 300px;" hoverMode="repulse" :moveSpeed="2" :lineLinked="false" )
-		v-layout( v-observe-visibility="visibilityChanged" row   class='text-xs-center' wrap jusify-center )
+		//the v-flex below is used to avoid v-observe-visibility swap looping during page transition
+		v-flex(v-observe-visibility="visibilityChanged" style="height: 3%")
+		v-layout( row   class='text-xs-center' wrap jusify-center )
 		transition(name="slideIn")
 			v-flex(id="penchee" v-if="show") {{ presentation}}<br/>{{ intro }}
 </template>
@@ -14,44 +16,45 @@ export default {
   data() {
     return {
       presentation: "Présentation",
-      intro: "Après avoir travaillé quelques années en tant que prestataire informatique, j\'ai décidé je me reconvertir au métier de développeur web.\n J\'ai commencé par des leçons sur Openclassrooms puis continué avec l\'IFPA Bordeaux.\n Cette page est réalisée avec Nuxt (Vuejs) et Vuetify et présente quelques petits développements en HTML, CSS, JS",
+      intro:
+        "Après avoir travaillé quelques années en tant que prestataire informatique, j'ai décidé je me reconvertir au métier de développeur web.\n J'ai commencé par des leçons sur Openclassrooms puis continué avec l'IFPA Bordeaux.\n Cette page est réalisée avec Nuxt (Vuejs) et Vuetify et présente quelques petits développements en HTML, CSS, JS",
       isVisible: true,
       show: false,
       bgImage: "/virgil-cayasa-460484-unsplash.jpg",
       bgImage2: "/astronomy-beautiful-constellations-813269.jpg",
       bgImage3: "/nathan-anderson-218687-unsplash.jpg"
-    }
+    };
   },
   computed: {
     textSize() {
-      switch ( this.$vuetify.breakpoint.name ) {
-        case 'xs':
-          return 'font-size: 18px;'
-        case 'sm':
-          return 'font-size: 20px;'
-        case 'md':
-          return 'font-size: 26px;'
-        case 'lg':
-          return 'font-size: 38px;'
-        case 'xl':
-          return 'font-size: 44px;'
+      switch (this.$vuetify.breakpoint.name) {
+        case "xs":
+          return "font-size: 18px;";
+        case "sm":
+          return "font-size: 20px;";
+        case "md":
+          return "font-size: 26px;";
+        case "lg":
+          return "font-size: 38px;";
+        case "xl":
+          return "font-size: 44px;";
       }
     }
   },
   methods: {
-    visibilityChanged( isVisible, entry ) {
-      this.isVisible = isVisible
+    visibilityChanged(isVisible, entry) {
+      this.isVisible = isVisible;
       //console.log( Math.round( entry.intersectionRatio * 100 ) + '%' )
-      if ( this.isVisible ) {
-				 console.log('visible')
-        this.show = true
+      if (this.isVisible) {
+        //console.log("visible");
+        this.show = true;
       } else {
-				 console.log('non visible')
-        this.show = false
+        //console.log("non visible");
+        this.show = false;
       }
     }
   }
-}
+};
 </script>
 
 <style lang="stylus" scoped>
