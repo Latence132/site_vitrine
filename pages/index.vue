@@ -1,13 +1,15 @@
 <template lang="pug">
-v-layout(wrap column v-touch="{ up: () => swipeTouch('Down'), down: () => swipeTouch('Up') }")
-	menuNav(@scrollIS="scrollIndex" v-scroll="onScroll")
-	v-parallax(id="slide1" src="/mer_ecran1.png" :height="screenHeight")
-		banner
-	v-parallax(id="slide2" src="/nathan-anderson-218687-unsplash_1400pxh.jpg" :height="screenHeight")
-		presentation
-	v-parallax(id="slide3" src="/ciel_grand_1400pwh.jpg" :height="screenHeight")
-		OSM
-	CV(id="slide4")
+v-layout(wrap column)
+	v-layout(wrap column v-touch="{ up: () => swipeTouch('Down'), down: () => swipeTouch('Up') }")
+		menuNav(@scrollIS="scrollIndex" v-scroll="onScroll")
+		v-parallax(id="slide1" src="/mer_ecran1.png" :height="screenHeight")
+			banner
+		v-parallax(id="slide2" src="/nathan-anderson-218687-unsplash_1400pxh.jpg" :height="screenHeight")
+			presentation
+		v-parallax(id="slide3" src="/ciel_grand_1400pwh.jpg" :height="screenHeight")
+			OSM
+	v-layout(wrap)
+		CV(id="slide4")
 </template>
 
 <script>
@@ -69,21 +71,29 @@ export default {
       }
     },
     swipeTouch(direction) {
+			console.log("swipeTouch start")
       if (direction == "Down") {
 				//console.log("swipteTouch Down ")
 				this.index++
-				if (this.index >= 5 ){ this.index=5}
+				if (this.index >= 4 ){ this.index=4}
         this.$store.dispatch("page/setPage",this.index)
 				//console.log("swipteTouch Down ", this.index)
 
       } else if (direction == "Up") {
 				this.index--
-				if (this.index <= 0 ){ this.index=0}
+				if (this.index <= 1 ){ this.index=1}
         this.$store.dispatch("page/setPage", this.index)
 				//console.log("swipteTouch Up ", this.index)
       }
-			this.$vuetify.goTo('#slide'+this.index, this.optionsSI);
+			this.$vuetify.goTo('#slide'+this.index, this.optionsSI)
+			//this.handleEnd()
     }
+		// handleStart(evt) {
+		// 	console.log("mouve start")
+		// 	evt.preventDefault()
+		//
+	  // 	//this.$vuetify.goTo('#slide'+this.index, this.optionsSI);
+		// }
   },
   mounted() {
     //console.log( window.innerHeight )
@@ -91,10 +101,11 @@ export default {
     this.resizeEvent = () => {
       //console.log("resize : " + window.innerHeight);
       this.screenWindow = window.innerHeight;
-    };
+    }
     window.addEventListener("resize", this.resizeEvent);
-
     this.resizeEvent();
+
+		//window.addEventListener("touchmouve", this.handleStart)
   },
   destroy() {
     window.removeEventListener("resize", this.resizeEvent);
