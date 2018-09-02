@@ -66,7 +66,6 @@ export default {
           main: {
             id: 0,
             name: "Drone Bryant",
-            purpose: "delivery",
             color: "red",
             number: 24,
             X: 44.839213,
@@ -131,32 +130,6 @@ export default {
           return "height: auto";
       }
     },
-    divTitle() {
-      switch (this.$vuetify.breakpoint.name) {
-        case "xs":
-          return "height: 50px;";
-					case "sm":
-	          return "height: 93px;";
-        default:
-          return "height: 93px;";
-      }
-    },
-		showDesc() {
-      switch (this.$vuetify.breakpoint.name) {
-        case "xs":
-          return true;
-				default:
-          return false;
-      }
-    },
-    chartPos() {
-      switch (this.$vuetify.breakpoint.name) {
-        case "xs":
-          return "justify-end";
-        default:
-          return "justify-center";
-      }
-    }
   },
   methods: {
     // Open the drones Popup
@@ -224,23 +197,3 @@ export default {
   }
 };
 </script>
-
-<style lang="stylus" scoped>
-//div >>> .front
-//  background-image: url('/button.png') !important
-//  background-size: cover !important
-//  opacity: 1 !important
-//
-//div >>> .back
-//  background-image: url('/button_back.png') !important
-//  background-size: cover !important
-//  opacity: 1 !important
-//
-//div >>> #joystick
-//	border-radius: 50%
-//	// border: 1px solid green
-//	height: 5px
-//	width: 5px
-
-
-</style>

@@ -16,13 +16,9 @@ export default {
   data() {
     return {
       presentation: "Présentation",
-      intro:
-        "Après avoir travaillé quelques années en tant que prestataire informatique, j'ai décidé je me reconvertir au métier de développeur web.\n J'ai commencé par des leçons sur Openclassrooms puis continué avec l'IFPA Bordeaux.\n Cette page est réalisée avec Nuxt (Vuejs) et Vuetify et présente quelques petits développements en HTML, CSS, JS",
+      intro:"Après avoir travaillé quelques années en tant que prestataire informatique, j'ai décidé je me reconvertir au métier de développeur web.\n J'ai commencé par des leçons sur Openclassrooms puis continué avec l'IFPA Bordeaux.",
       isVisible: true,
       show: false,
-      bgImage: "/virgil-cayasa-460484-unsplash.jpg",
-      bgImage2: "/astronomy-beautiful-constellations-813269.jpg",
-      bgImage3: "/nathan-anderson-218687-unsplash.jpg"
     };
   },
   computed: {

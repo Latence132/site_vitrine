@@ -4,7 +4,7 @@ module.exports = {
   */
   build: {
     babel: {
-     presets: ['env','vue-app','es2015'],
+     presets: ['env','vue-app'],
      plugins: ['transform-runtime']
    },
    vendor: [

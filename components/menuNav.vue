@@ -4,14 +4,14 @@ v-layout.posFixed(id="toolbar" wrap   @mouseover="setToolbar(true)" @mouseleave=
 		v-toolbar.transparent(v-if="toolbar")
 			v-layout(wrap row justify-space-between align-center )
 				v-flex(xs4 sm2 class="text-xs-center ma-0 pa-0")
-					v-btn.colorWhite(flat :class="navIndex === 1 ? 'elevation-10' : '' "  class="ma-0 pa-0" :style="textSize" @click="[$emit('scrollIS', '#slide1'), setPage(1) ]") Accueuil
+					v-btn.colorWhite(flat :class="navIndex === 1 ? 'elevation-10' : '' "  class="ma-0 pa-0" :style="textSize" @click="[$emit('scrollIS', '#slide1'), setPage(1) ]") Acceuil
 				v-flex(xs8 sm10 class="text-xs-center ma-0 pa-0")
 					v-toolbar-items
 						v-layout(wrap row justify-end align-center )
 							v-flex(xs6 sm2  class="text-xs-center mx-auto" :style="flexSize")
 								v-btn.colorWhite(flat :class="navIndex === 2 ? 'elevation-10' : '' " :style="textSize" @click="[$emit('scrollIS','#slide2' ), setPage(2)]") Présentation
 							v-flex(xs6 sm2  class="text-xs-center mx-auto" :style="flexSize")
-								v-btn.colorWhite(flat :class="navIndex === 3 ? 'elevation-10' : '' " :style="textSize" @click="[$emit('scrollIS','#slide3' ), setPage(3)]") Pilotez un drone
+								v-btn.colorWhite(flat :class="navIndex === 3 ? 'elevation-10' : '' " :style="textSize" @click="[$emit('scrollIS','#slide3' ), setPage(3)]") Appli
 							v-flex(xs6 sm2  class="text-xs-center mx-auto" :style="flexSize")
 								v-btn.colorWhite(flat :class="navIndex === 4 ? 'elevation-10' : '' " :style="textSize" @click="[$emit('scrollIS','#slide4' ), setPage(4)]") CV
 							v-flex(xs6 sm2  class="text-xs-center mx-auto" :style="flexSize")

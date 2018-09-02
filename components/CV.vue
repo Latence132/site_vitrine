@@ -37,8 +37,10 @@ v-flex.black--text(id="cvWrapper")
         h4
           img(src='contact_transparent.png' alt="contact")
         v-flex
-          strong(style="font-size: 2rem") {{contact.email}}
-          | <br/> {{contact.tel}} <br/> {{contact.adresse}}
+          strong(style="font-size: 1.2rem") {{contact.email}}
+        v-flex site perso :
+          nuxt-link(to="/") https://latdat2.org
+        v-flex {{contact.tel}} <br/> {{contact.adresse}}
 
     v-flex.elevation-6.text-xs-center(xs12 sm8 id="cvRight")
 
@@ -97,7 +99,7 @@ export default {
       competences:[
         { titre: 'Développer une application client-serveur',  list: ['Maquetter une application', 'Concevoir une base de données', 'Mettre en place une base de données', 'Développer une interface utilisateur', 'Développer des composants d\'accès aux données']},
         { titre: 'Développer une application web',  list: ['Développer des pages web en lien avec une base de données', 'Mettre en oeuvre une solution de gestion de contenu ou e-commerce', 'Développer une application simple de mobilité numérique']},
-        { titre: 'Langages',  list: ['HTML, CSS, JavaScript, PHP, SQL' ]},
+        { titre: 'Langages',  list: ['HTML, CSS, JavaScript, PHP, JAVA, SQL' ]},
         { titre: 'Outils de développement',  list: ['Bootstrap4, Semantic-UI, Vuetify', 'Nuxt, VueJS, NodeJS, JQuery', 'Symfony 3, Webpack, Git' ]}
       ],
       langue: { nom:'Anglais', niv:'courant'},
