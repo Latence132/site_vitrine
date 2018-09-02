@@ -1,8 +1,6 @@
 <template lang="pug">
 v-layout( id="OSM" wrap justify-center align-content-start )
-	v-flex(xs12 style="height: 93px; bottom: 0px;" class="text-xs-center" :style="textSize2")
-		v-layout( align-end justify-center row fill-height)
-			v-flex.white--text Suivez et pilotez les relevés météorologiques
+	v-flex(xs12  class="text-xs-center" :style="textSize2").white--text Suivez en directe les relevés météorologiques
 	v-flex(xs12)
 			v-layout(wrap justify-center)
 					v-flex.mt-1.blue(xs12 sm6  :style="divHeight")
@@ -12,14 +10,9 @@ v-layout( id="OSM" wrap justify-center align-content-start )
 								l-marker(v-for="drone in drones" :key="drone.main.id"	:lat-lng="{ lat: drone.main.X, lng: drone.main.Y}"	@click="openPopup")
 									l-popup(:content="drone.main.name" :options="{ autoClose: true, closeOnClick: false, autoPan: false }")
 					//position relative is for the responsiveness of chartjs
-					v-flex.ml-2.mt-1.blue.chart-container(xs12 sm4 style="position: relative" )
+					v-flex.ml-2.mt-1.blue.chart-container(xs10 sm4 style="position: relative" )
 						widget-line(id="chart" :chart-data="currentData" :options='optCharts' headline="Relevé météorologique" ref="line" )
-	v-flex(xs12)
-			v-layout(wrap align-content-space-around)
-				//v-flex.mx-auto.mt-5(xs6 id='joystick')
-				//v-flex.mx-auto(xs6)
-				//	v-btn.red(@click="xi = 0, yi = 0, working = false" ) Stop
-					v-flex(style="font-family: 'Dosis', sans-serif;" :style="textSize") La carte est développé avec OpenStreetMap <br/> le joystick avec nipplejs <br/> le graphique avec chartjs
+	v-flex( xs12 sm10 style="font-family: 'Dosis', sans-serif;" :style="textSize").black--text  La carte est développé avec OpenStreetMap <br/>Le graphique avec chartjs
 </template>
 
 <script>
@@ -30,7 +23,7 @@ export default {
     return {
       X: 44.839213,
       Y: -0.715537,
-      zoom: 17,
+      zoom: 15,
       xi: 0.00001,
       yi: 0.00001,
       working: false,
@@ -101,7 +94,7 @@ export default {
     textSize() {
       switch (this.$vuetify.breakpoint.name) {
         case "xs":
-          return "font-size: 10px;";
+          return "font-size: 12px;";
         case "sm":
           return "font-size: 12px;";
         case "md":
@@ -138,12 +131,22 @@ export default {
           return "height: auto";
       }
     },
-    divMargin() {
+    divTitle() {
       switch (this.$vuetify.breakpoint.name) {
         case "xs":
-          return "margin-top: 5px;";
+          return "height: 50px;";
+					case "sm":
+	          return "height: 93px;";
         default:
-          return "";
+          return "height: 93px;";
+      }
+    },
+		showDesc() {
+      switch (this.$vuetify.breakpoint.name) {
+        case "xs":
+          return true;
+				default:
+          return false;
       }
     },
     chartPos() {
@@ -162,32 +165,6 @@ export default {
         event.target.openPopup();
       });
     },
-    // startJoystick() {
-    //   const create = require("nipplejs").create;
-    //   var linVelStep = 0.000001;
-    //   var angularVelStep = 0.000001;
-    //   this.joy = create({
-    //     color: null,
-    //     zone: document.getElementById("joystick"),
-    //     mode: "static",
-    //     position: {
-    //       left: "15%",
-    //       top: "75%"
-    //     },
-    //     size: 150,
-    //     restOpacity: 1
-    //   });
-      // this.joy.on("move", (evt, data) => {
-      //   this.working = true;
-      //   if (data.hasOwnProperty("direction")) {
-      //     var dataDist = data.distance;
-      //     var angle = data.angle.radian;
-      //     this.xi = Math.cos(angle) * dataDist * linVelStep;
-      //     this.yi = Math.sin(angle) * dataDist * linVelStep;
-      //     // this.mouveDrone(this.xi, this.yi);
-      //   }
-      // });
-    // },
     mouveDrone(xi, yi) {
       this.drones[0].main.Y += xi;
       this.drones[0].main.X += yi;

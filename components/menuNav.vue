@@ -1,5 +1,5 @@
 <template lang="pug">
-v-layout.posFixed(id="toolbar" wrap   @mouseover="toolbar = true" @mouseleave="toolbar = false")
+v-layout.posFixed(id="toolbar" wrap   @mouseover="setToolbar(true)" @mouseleave="setToolbar(false)")
 	transition(name="fade" mode="out-in")
 		v-toolbar.transparent(v-if="toolbar")
 			v-layout(wrap row justify-space-between align-center )
@@ -33,11 +33,6 @@ export default {
       crossorigin: "anonymous"
     } ]
   },
-  data() {
-    return {
-      toolbar: true
-    }
-  },
   computed: {
     iconSize() {
       switch ( this.$vuetify.breakpoint.name ) {
@@ -65,11 +60,18 @@ export default {
     },
 		navIndex(){
 			return this.$store.state.page.page
+		},
+		toolbar() {
+			return this.$store.state.page.toolbar
 		}
   },
 	methods:{
 		setPage(page){
 			this.$store.dispatch('page/setPage',page)
+		},
+		setToolbar(boolean){
+			//console.log('setToolbar : ', boolean)
+			this.$store.dispatch('page/setToolbar',boolean)
 		}
 	}
 }
