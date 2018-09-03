@@ -2,11 +2,11 @@
 v-layout(wrap column)
 	v-layout(wrap column v-touch="{ up: () => swipeTouch('Up'), down: () => swipeTouch('Down') }")
 		menuNav(@scrollIS="scrollIndex" v-scroll="onScroll")
-		v-parallax(id="slide1" src="/mer_ecran1.png" :height="screenHeight")
+		v-parallax(id="slide1" src="/mer_ecran1.jp2" :height="screenHeight")
 			banner
-		v-parallax(id="slide2" src="/nathan-anderson-218687-unsplash_1400pxh.jpg" :height="screenHeight")
+		v-parallax(id="slide2" src="/etoile_1400pxh.jp2" :height="screenHeight")
 			presentation
-		v-parallax(id="slide3" src="/ciel_grand_1400pwh.jpg" :height="screenHeight")
+		v-parallax(id="slide3" src="/ciel_grand_1400pwh.jp2" :height="screenHeight")
 			OSM
 	v-layout(wrap)
 		CV(id="slide4")

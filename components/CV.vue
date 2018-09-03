@@ -1,10 +1,10 @@
 <template lang="pug">
 v-flex.black--text(id="cvWrapper")
   // First banner
-  v-parallax(id="parallax" src="/mer_ecran1.png" height="110" width="100%")
+  v-parallax(id="parallax" src="/mer_ecran1.jp2" height="110" width="100%")
     v-layout(id="cvUpperBanner" xs12 wrap align-center )
       v-flex.ml-0.text-xs-center(xs4)
-        img.mt-2.pt-2(src='\photo_cv_petit.png' alt="alexandre_chaumer_photo" style="height: 100px;	width: auto;")
+        img.mt-2.pt-2(src='\photo_cv_petit.jp2' alt="alexandre_chaumet_photo" style="height: 100px;	width: auto;")
       v-flex.mr-0.text-xs-center(xs8 style="font-size: 1.2rem")
         h2.my-auto Alexandre Chaumet
         h3.my-auto Développeur web

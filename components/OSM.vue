@@ -1,6 +1,6 @@
 <template lang="pug">
 v-layout( id="OSM" wrap justify-center align-content-start )
-	v-flex(xs12  class="text-xs-center" :style="textSize2").white--text Suivez en directe les relevés météorologiques
+	v-flex.pt-5(xs12  class="text-xs-center" :style="textSize2").white--text Suivez en directe les relevés météorologiques {{ descDisplay }}
 	v-flex(xs12)
 			v-layout(wrap justify-center)
 					v-flex.mt-1.blue(xs12 sm6  :style="divHeight")
@@ -10,9 +10,10 @@ v-layout( id="OSM" wrap justify-center align-content-start )
 								l-marker(v-for="drone in drones" :key="drone.main.id"	:lat-lng="{ lat: drone.main.X, lng: drone.main.Y}"	@click="openPopup")
 									l-popup(:content="drone.main.name" :options="{ autoClose: true, closeOnClick: false, autoPan: false }")
 					//position relative is for the responsiveness of chartjs
-					v-flex.ml-2.mt-1.blue.chart-container(xs10 sm4 style="position: relative" )
+					v-flex.ml-2.mt-1.blue.chart-container(xs7 sm4 style="position: relative" )
 						widget-line(id="chart" :chart-data="currentData" :options='optCharts' headline="Relevé météorologique" ref="line" )
-	v-flex( xs12 sm10 style="font-family: 'Dosis', sans-serif;" :style="textSize").black--text  La carte est développé avec OpenStreetMap <br/>Le graphique avec chartjs
+					v-flex.ml-2.mt-1( v-if="descDisplay" xs3 style="font-family: 'Dosis', sans-serif;" :style="textSize").white--text  La carte est développé avec OpenStreetMap <br/>Le graphique avec chartjs
+					v-flex.ml-2.mt-1(  v-else  sm10 style="font-family: 'Dosis', sans-serif;" :style="textSize").white--text  La carte est développé avec OpenStreetMap <br/>Le graphique avec chartjs
 </template>
 
 <script>
@@ -130,6 +131,22 @@ export default {
           return "height: auto";
       }
     },
+		descDisplay() {
+			switch (this.$vuetify.breakpoint.name) {
+        case "xs":
+          return true
+        case "sm":
+          return false
+        case "md":
+          return false
+        case "lg":
+          return false
+        case "xl":
+          return false
+        default:
+          return false
+      }
+		}
   },
   methods: {
     // Open the drones Popup
@@ -195,5 +212,5 @@ export default {
       }
     ]
   }
-};
+}
 </script>

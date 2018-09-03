@@ -4,18 +4,18 @@ v-layout.posFixed(id="toolbar" wrap   @mouseover="setToolbar(true)" @mouseleave=
 		v-toolbar.transparent(v-if="toolbar")
 			v-layout(wrap row justify-space-between align-center )
 				v-flex(xs4 sm2 class="text-xs-center ma-0 pa-0")
-					v-btn.colorWhite(flat :class="navIndex === 1 ? 'elevation-10' : '' "  class="ma-0 pa-0" :style="textSize" @click="[$emit('scrollIS', '#slide1'), setPage(1) ]") Acceuil
+					v-btn.colorWhite(flat :class="navIndex === 1 ? 'elevation-10' : '' "  class="ma-0 pa-0" :style="textSize" @click="[$emit('scrollIS', '#slide1'), setPage(1) ]" role="button" aria-label="Acceuil") Acceuil
 				v-flex(xs8 sm10 class="text-xs-center ma-0 pa-0")
 					v-toolbar-items
 						v-layout(wrap row justify-end align-center )
 							v-flex(xs6 sm2  class="text-xs-center mx-auto" :style="flexSize")
-								v-btn.colorWhite(flat :class="navIndex === 2 ? 'elevation-10' : '' " :style="textSize" @click="[$emit('scrollIS','#slide2' ), setPage(2)]") Présentation
+								v-btn.colorWhite(flat :class="navIndex === 2 ? 'elevation-10' : '' " :style="textSize" @click="[$emit('scrollIS','#slide2' ), setPage(2)]" role="button" aria-label="Présentation") Présentation
 							v-flex(xs6 sm2  class="text-xs-center mx-auto" :style="flexSize")
-								v-btn.colorWhite(flat :class="navIndex === 3 ? 'elevation-10' : '' " :style="textSize" @click="[$emit('scrollIS','#slide3' ), setPage(3)]") Appli
+								v-btn.colorWhite(flat :class="navIndex === 3 ? 'elevation-10' : '' " :style="textSize" @click="[$emit('scrollIS','#slide3' ), setPage(3)]" role="button" aria-label="Appli") Appli
 							v-flex(xs6 sm2  class="text-xs-center mx-auto" :style="flexSize")
-								v-btn.colorWhite(flat :class="navIndex === 4 ? 'elevation-10' : '' " :style="textSize" @click="[$emit('scrollIS','#slide4' ), setPage(4)]") CV
+								v-btn.colorWhite(flat :class="navIndex === 4 ? 'elevation-10' : '' " :style="textSize" @click="[$emit('scrollIS','#slide4' ), setPage(4)]" role="button" aria-label="CV") CV
 							v-flex(xs6 sm2  class="text-xs-center mx-auto" :style="flexSize")
-								v-btn.colorWhite(flat :style="textSize")
+								v-btn.colorWhite(flat :style="textSize" role="button" aria-label="linkedin")
 									a(href="https://www.linkedin.com/in/alexandre-chaumet-b7104650/" target="_blank")
 										img(src="/linkedin.jpg" :height="iconSize")
 
