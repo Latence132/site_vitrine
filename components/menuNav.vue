@@ -18,6 +18,7 @@ v-layout.posFixed(id="toolbar" wrap   @mouseover="setToolbar(true)" @mouseleave=
 								v-btn.colorWhite(flat :style="textSize" role="button" aria-label="linkedin")
 									a(href="https://www.linkedin.com/in/alexandre-chaumet-b7104650/" target="_blank")
 										img(src="/linkedin.jpg" :height="iconSize")
+				v-flex.white--text(xs12 class="text-xs-center ma-0 pa-0" :style="textSizeFireFox") Utilisez firefox sur mobile pour une meilleure expérience de navigation
 
 		v-flex(v-else-if="!toolbar")
 			v-icon.barsMenu.ma-3.pa-3 fas fa-bars
@@ -63,7 +64,15 @@ export default {
 		},
 		toolbar() {
 			return this.$store.state.page.toolbar
-		}
+		},
+		textSizeFireFox() {
+      switch ( this.$vuetify.breakpoint.name ) {
+        case 'xs':
+          return 'font-size: 8px'
+        default:
+          return ''
+      }
+    }
   },
 	methods:{
 		setPage(page){

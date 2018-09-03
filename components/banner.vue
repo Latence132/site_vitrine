@@ -1,7 +1,7 @@
 <template lang="pug">
 v-layout(id="banner" class="ma-0 pa-0 posAbsoluteVideo")
 	v-flex(xs12 class="ma-0 pa-0")
-		video-bg(class="ma-0 pa-0" :sources="['/bg-2.mp4','/bg-2.webm','/bg-2.ogg']" img="/mer_ecran1.png")
+		video-bg(class="ma-0 pa-0" :sources="['/bg-2.mp4','/bg-2.webm','/bg-2.ogg']" img="/mer_ecran1.pj2" autoplays loop)
 			v-flex(xs12 class="text-xs-center ma-0 pa-0 posAbsolute"  :style="textSize") Bienvenue sur le site de Alexandre Chaumet,<br/>développeur web
 
 </template>
