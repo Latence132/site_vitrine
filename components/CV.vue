@@ -85,9 +85,9 @@ export default {
     return {
       expPros: [
         { date:'2018', temps:'1,5 mois', logo:'akeros.png', lieu:'Mérignac (33)', job: 'Développeur Front-end Nuxt/VueJS', entreprise: 'Akeros', travail: 'Développement d\'une page de supervision de drones et de pages permettants de commander un robot'},
-        { date:'2016', temps:'1,5 ans', logo:'alten.png', lieu:'La défense (92)', job: 'Ingénieur solution SCADA', entreprise: 'Alten SIR - Air Liquide Service', travail: 'Installation, maintenance et evolution de solutions applicatives d\'acquisition et d\'historisation de données'},
-        { date:'2014', temps:'1,5 ans', logo:'alten.png', lieu:'Arceuil (94)', job: 'Contrôleur de base de données', entreprise: 'Alten SIR - Orange', travail: 'Fiabilisation et migration du parc commercial depuis l\'ancien CRM de Wanadoo sur le nouveau d\'Orange'},
-        { date:'2013', temps:'1,5 ans', logo:'solutec.png', lieu:'Massy (92)', job: 'Analyste de base données', entreprise: 'Solutec - Carrefour', travail: 'Réalisation d\'études et d\'extractions ad hoc en SQL'},
+        { date:'2016', temps:'1,5 an', logo:'alten.png', lieu:'La défense (92)', job: 'Ingénieur solution SCADA', entreprise: 'Alten SIR - Air Liquide Service', travail: 'Installation, maintenance et evolution de solutions applicatives d\'acquisition et d\'historisation de données'},
+        { date:'2014', temps:'1,5 an', logo:'alten.png', lieu:'Arceuil (94)', job: 'Contrôleur de base de données', entreprise: 'Alten SIR - Orange', travail: 'Fiabilisation et migration du parc commercial depuis l\'ancien CRM de Wanadoo sur le nouveau d\'Orange'},
+        { date:'2013', temps:'1,5 an', logo:'solutec.png', lieu:'Massy (92)', job: 'Analyste de base données', entreprise: 'Solutec - Carrefour', travail: 'Réalisation d\'études et d\'extractions ad hoc en SQL'},
         { date:'2009', temps:'3.0 ans', logo:'faurecia.jpg', lieu:'Caligny (61)', job: 'Apprenti qualiticien produit/process', entreprise: 'Faurecia', travail: 'Développement de macros VBA permettant de piloter informatiquement des indicateurs de non-qualités'},
       ],
       formations: [
