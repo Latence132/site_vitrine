@@ -1,6 +1,6 @@
 <template lang="pug">
 v-layout( id="OSM" wrap justify-center align-content-start )
-	v-flex.pt-5(xs12  class="text-xs-center" :style="textSize2").white--text Suivez en directe les relevés météorologiques
+	v-flex.pt-5(xs12  class="text-xs-center" :style="textSize2").white--text Suivez en direct les relevés météorologiques d'un drone
 	v-flex(xs12)
 			v-layout(wrap justify-center)
 					v-flex.mt-1.blue(xs12 sm6  :style="divHeight")

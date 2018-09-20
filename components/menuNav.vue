@@ -11,7 +11,7 @@ v-layout.posFixed(id="toolbar" wrap   @mouseover="setToolbar(true)" @mouseleave=
 							v-flex(xs6 sm2  class="text-xs-center mx-auto" :style="flexSize")
 								v-btn.colorWhite(flat :class="navIndex === 2 ? 'elevation-10' : '' " :style="textSize" @click="[$emit('scrollIS','#slide2' ), setPage(2)]" role="button" aria-label="Présentation") Présentation
 							v-flex(xs6 sm2  class="text-xs-center mx-auto" :style="flexSize")
-								v-btn.colorWhite(flat :class="navIndex === 3 ? 'elevation-10' : '' " :style="textSize" @click="[$emit('scrollIS','#slide3' ), setPage(3)]" role="button" aria-label="Appli") Appli
+								v-btn.colorWhite(flat :class="navIndex === 3 ? 'elevation-10' : '' " :style="textSize" @click="[$emit('scrollIS','#slide3' ), setPage(3)]" role="button" aria-label="Appli") Mini Map
 							v-flex(xs6 sm2  class="text-xs-center mx-auto" :style="flexSize")
 								v-btn.colorWhite(flat :class="navIndex === 4 ? 'elevation-10' : '' " :style="textSize" @click="[$emit('scrollIS','#slide4' ), setPage(4)]" role="button" aria-label="CV") CV
 							v-flex(xs6 sm2  class="text-xs-center mx-auto" :style="flexSize")
